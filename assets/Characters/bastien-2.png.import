@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tile_0027.png-e12e6e2b27526f22d8d6b9335c97ba85.stex"
+path="res://.import/bastien-2.png-7f495496c81e42f81f3dc6267bc2128c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Tiles/tile_0027.png"
-dest_files=[ "res://.import/tile_0027.png-e12e6e2b27526f22d8d6b9335c97ba85.stex" ]
+source_file="res://assets/Characters/bastien-2.png"
+dest_files=[ "res://.import/bastien-2.png-7f495496c81e42f81f3dc6267bc2128c.stex" ]
 
 [params]
 

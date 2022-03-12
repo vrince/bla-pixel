@@ -1,31 +1,102 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://tiles.tscn" type="PackedScene" id=2]
+[ext_resource path="res://tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://objects/box.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/Characters/bastien-2.png" type="Texture" id=4]
+[ext_resource path="res://assets/Characters/bastien-1.png" type="Texture" id=5]
+[ext_resource path="res://assets/Characters/bastien-0.png" type="Texture" id=6]
+[ext_resource path="res://assets/Characters/bastien-3.png" type="Texture" id=7]
+[ext_resource path="res://assets/Characters/lucille-3.png" type="Texture" id=8]
+[ext_resource path="res://assets/Characters/lucille-1.png" type="Texture" id=9]
+[ext_resource path="res://assets/Characters/lucille-2.png" type="Texture" id=10]
+[ext_resource path="res://assets/Characters/lucille-0.png" type="Texture" id=11]
+[ext_resource path="res://assets/Characters/adeline-3.png" type="Texture" id=12]
+[ext_resource path="res://assets/Characters/adeline-2.png" type="Texture" id=13]
+[ext_resource path="res://assets/Characters/adeline-0.png" type="Texture" id=14]
+[ext_resource path="res://assets/Characters/adeline-1.png" type="Texture" id=15]
+[ext_resource path="res://assets/Background/backgroundForest.png" type="Texture" id=16]
+[ext_resource path="res://objects/button.tscn" type="PackedScene" id=17]
+[ext_resource path="res://objects/object.tscn" type="PackedScene" id=18]
 
-[sub_resource type="PhysicsMaterial" id=1]
+[sub_resource type="PhysicsMaterial" id=73]
 friction = 0.5
+
+[sub_resource type="SpriteFrames" id=74]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
+} ]
+
+[sub_resource type="SpriteFrames" id=75]
+animations = [ {
+"frames": [ ExtResource( 11 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
+} ]
+
+[sub_resource type="SpriteFrames" id=76]
+animations = [ {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 13 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
+} ]
 
 [node name="main" type="Node2D"]
 
-[node name="tiles" parent="." instance=ExtResource( 2 )]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+follow_viewport_enable = true
 
-[node name="TileMap" parent="tiles" index="0"]
-tile_data = PoolIntArray( 0, 0, 0, 25, 0, 0, 65536, 0, 0, 65552, 0, 16, 65561, 0, 0, 131072, 0, 0, 131091, 0, 16, 131097, 0, 0, 196608, 0, 0, 196633, 0, 0, 262144, 0, 0, 262165, 0, 16, 262169, 0, 0, 327680, 0, 0, 327694, 0, 17, 327695, 0, 18, 327696, 0, 19, 327705, 0, 0, 393216, 0, 0, 393230, 0, 131089, 393231, 0, 131090, 393232, 0, 131091, 393241, 0, 0, 458752, 0, 0, 458767, 0, 327696, 458777, 0, 0, 524288, 0, 0, 524301, 0, 196625, 524302, 0, 196626, 524303, 0, 196626, 524304, 0, 196626, 524305, 0, 196627, 524313, 0, 0, 589824, 0, 0, 589838, 536870912, 393235, 589839, 0, 393232, 589843, 0, 1, 589844, 0, 2, 589845, 0, 2, 589846, 0, 2, 589847, 0, 2, 589848, 0, 2, 589849, 0, 2, 655360, 0, 0, 655375, 0, 393233, 655385, 0, 0, 720896, 0, 0, 720909, 0, 1, 720910, 0, 2, 720911, 0, 2, 720912, 0, 2, 720913, 0, 3, 720921, 0, 0, 786432, 0, 0, 786457, 0, 0, 851968, 0, 0, 851993, 0, 0, 917504, 0, 65538, 917505, 0, 65538, 917506, 0, 65538, 917507, 0, 65538, 917508, 0, 65538, 917509, 0, 65538, 917510, 0, 65538, 917511, 0, 65538, 917512, 0, 65538, 917513, 0, 65538, 917514, 0, 65538, 917515, 0, 65538, 917516, 0, 65538, 917517, 0, 65538, 917518, 0, 65538, 917519, 0, 65538, 917520, 0, 65538, 917521, 0, 65538, 917522, 0, 65538, 917523, 0, 65538, 917524, 0, 65538, 917525, 0, 65538, 917526, 0, 65538, 917527, 0, 65538, 917528, 0, 65538, 917529, 0, 65538, 917530, 0, 65538 )
+[node name="BackgroundForest" type="Sprite" parent="."]
+position = Vector2( 232, 136 )
+scale = Vector2( 0.583008, 0.583008 )
+texture = ExtResource( 16 )
+
+[node name="Back" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 18, 18 )
+format = 1
+tile_data = PoolIntArray( 196627, 536870912, 327696, 458771, 536870912, 327696, 524300, 536870912, 327696, 589836, 536870912, 327696, 655372, 536870912, 327696, 655379, 536870912, 327696, 720907, 0, 327698, 720908, 536870912, 393234, 786444, 536870912, 327696, 851980, 536870912, 393233 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 18, 18 )
+format = 1
+tile_data = PoolIntArray( -131053, 0, 327696, -65517, 0, 327696, 65533, 536870912, 65554, 65534, 0, 65554, 65535, 0, 65555, 19, 0, 327696, 26, 0, 65553, 27, -1610612736, 65554, 28, -1610612736, 65554, 131069, 536870912, 65554, 131070, 0, 65554, 131071, 0, 65555, 65555, 0, 327696, 65562, 0, 65553, 65563, -1610612736, 65554, 65564, -1610612736, 65554, 196605, 536870912, 65554, 196606, 0, 65554, 196607, 0, 65555, 131091, 0, 327696, 131098, 0, 65553, 131099, -1610612736, 65554, 131100, -1610612736, 65554, 262141, 536870912, 65554, 262142, 0, 65554, 262143, 0, 65555, 196623, 0, 196625, 196624, 0, 196626, 196625, 0, 196626, 196626, 0, 196626, 196627, 0, 196626, 196628, 0, 196627, 196634, 0, 131089, 196635, 0, 131090, 196636, -1610612736, 65554, 327677, 536870912, 65554, 327678, 0, 65554, 327679, 0, 65555, 262163, 0, 327696, 262168, 0, 17, 262169, 0, 18, 262170, 0, 18, 262171, 0, 18, 262172, -1610612736, 65554, 393213, 536870912, 65554, 393214, 0, 65554, 393215, 0, 65555, 327698, 0, 262162, 327699, 0, 327697, 327700, 0, 393235, 327704, 0, 131089, 327705, 0, 131090, 327706, 0, 131090, 327707, 0, 131090, 327708, -1610612736, 65554, 458749, 536870912, 65554, 458750, 0, 65554, 458751, 0, 65555, 393227, 0, 17, 393228, 0, 18, 393229, 0, 19, 393235, 0, 327696, 393242, 0, 17, 393243, 0, 18, 393244, -1610612736, 65554, 524285, 536870912, 65554, 524286, 0, 65554, 524287, 0, 65555, 458763, 0, 131089, 458764, 0, 262161, 458765, 0, 131091, 458770, 0, 196625, 458771, 0, 196626, 458772, 0, 196626, 458773, 0, 196626, 458774, 0, 196627, 458778, 0, 65553, 458779, -1610612736, 65554, 458780, -1610612736, 65554, 589821, 536870912, 65554, 589822, 0, 65554, 589823, 0, 65555, 524307, 0, 262160, 524314, 0, 65553, 524315, -1610612736, 65554, 524316, -1610612736, 65554, 655357, 536870912, 65554, 655358, 0, 65554, 655359, 0, 65555, 589826, 0, 393225, 589827, 0, 393225, 589828, 0, 393225, 589830, 0, 393221, 589832, 0, 393224, 589843, 0, 393234, 589844, 536870912, 262162, 589850, 0, 65553, 589851, -1610612736, 65554, 589852, -1610612736, 65554, 720893, 536870912, 65554, 720894, 0, 65554, 720895, 0, 65555, 655361, 1073741824, 458753, 655362, -1073741824, 393216, 655363, -1073741824, 393216, 655364, -1073741824, 393216, 655365, -1073741824, 393216, 655366, -1073741824, 393216, 655367, -1073741824, 393216, 655368, -1073741824, 458752, 655371, 0, 196625, 655372, 0, 196626, 655373, 0, 196627, 655376, 0, 196625, 655377, 0, 196626, 655378, 0, 196626, 655379, 0, 196626, 655380, 0, 196627, 655386, 0, 65553, 655387, -1610612736, 65554, 655388, -1610612736, 65554, 786429, 536870912, 65554, 786430, 0, 65554, 786431, 0, 65555, 720897, 0, 393216, 720899, 1073741824, 393224, 720901, 1073741824, 393221, 720904, 1073741824, 393225, 720915, 0, 327696, 720922, 0, 65553, 720923, -1610612736, 65554, 720924, -1610612736, 65554, 851965, 536870912, 65554, 851966, 0, 65554, 851967, 0, 65555, 786433, 0, 393216, 786451, 0, 327696, 786458, 0, 65553, 786459, -1610612736, 65554, 786460, -1610612736, 65554, 917501, 536870912, 65554, 917502, 0, 65554, 917503, 0, 65555, 851969, 0, 393216, 851970, 0, 14, 851971, 0, 13, 851972, 0, 13, 851973, 0, 12, 851974, 0, 13, 851975, 0, 13, 851976, 0, 15, 851987, 0, 393233, 851994, 0, 65553, 851995, -1610612736, 65554, 851996, -1610612736, 65554, 983038, 0, 65538, 983039, 0, 65538, 917504, 0, 65538, 917505, 0, 65538, 917506, 0, 65538, 917507, 0, 65538, 917508, 0, 65538, 917509, 0, 65538, 917510, 0, 65538, 917511, 0, 65538, 917512, 0, 65538, 917513, 0, 65538, 917514, 0, 65538, 917515, 0, 65538, 917516, 0, 65538, 917517, 0, 65538, 917518, 0, 65538, 917519, 0, 65538, 917520, 0, 65538, 917521, 0, 65538, 917522, 0, 65538, 917523, 0, 65538, 917524, 0, 65538, 917525, 0, 65538, 917526, 0, 65538, 917527, 0, 65538, 917528, 0, 65538, 917529, 0, 65538, 917530, 0, 65538, 917531, 0, 65538, 917532, 0, 65538 )
 
 [node name="RigidBody2D" parent="." instance=ExtResource( 3 )]
-position = Vector2( 189, 223 )
+position = Vector2( 272, 85 )
 mass = 5.0
-physics_material_override = SubResource( 1 )
+physics_material_override = SubResource( 73 )
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 52, 216 )
-speed = 100.0
-ground_speed_delta = 40.0
+[node name="Bastien" parent="." instance=ExtResource( 1 )]
+position = Vector2( 48, 216 )
+id = "bastien"
+color = Color( 0.0901961, 0.666667, 0.490196, 1 )
+frames = SubResource( 74 )
 
-[node name="Player2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 138, 217 )
-id = 50
+[node name="Lucille" parent="." instance=ExtResource( 1 )]
+position = Vector2( 88, 215 )
+id = "lucille"
+color = Color( 0.462745, 0.164706, 0.760784, 1 )
+frames = SubResource( 75 )
 
-[editable path="tiles"]
+[node name="Adeline" parent="." instance=ExtResource( 1 )]
+position = Vector2( 125, 213 )
+id = "adeline"
+color = Color( 0.913725, 0.776471, 0.239216, 1 )
+frames = SubResource( 76 )
+
+[node name="Button" parent="." instance=ExtResource( 17 )]
+position = Vector2( 272, 244 )
+
+[node name="Object" parent="." instance=ExtResource( 18 )]
+position = Vector2( 225, 99 )
+
+[node name="Object2" parent="." instance=ExtResource( 18 )]
+position = Vector2( 323, 31 )
+type = "coin"
