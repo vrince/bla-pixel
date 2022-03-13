@@ -6,7 +6,7 @@
 [sub_resource type="PhysicsMaterial" id=6]
 friction = 0.5
 
-[sub_resource type="ParticlesMaterial" id=4]
+[sub_resource type="ParticlesMaterial" id=8]
 emission_shape = 1
 emission_sphere_radius = 9.0
 flag_disable_z = true
@@ -19,6 +19,7 @@ radial_accel_random = 0.2
 tangential_accel = 10.0
 tangential_accel_random = 0.16
 damping = 1.73
+scale = 2.0
 
 [sub_resource type="CircleShape2D" id=7]
 
@@ -36,9 +37,10 @@ ground_speed_delta = 20.0
 frames = ExtResource( 1 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
+emitting = false
 amount = 40
 local_coords = false
-process_material = SubResource( 4 )
+process_material = SubResource( 8 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 1 )
@@ -48,5 +50,5 @@ flip_h = true
 position = Vector2( 0, 2 )
 shape = SubResource( 7 )
 
-[node name="Item" type="Sprite" parent="."]
-position = Vector2( 0, -7 )
+[node name="ItemSprite" type="Sprite" parent="."]
+position = Vector2( 0, -8 )

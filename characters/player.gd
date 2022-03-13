@@ -5,6 +5,7 @@ class_name Player
 export var id: String = "none"
 export var selected: bool = true
 export var color: Color = Color.white
+export var item: String = ""
 export var stomp_impulse: = 600.0
 export var jump_impulse: = 200.0
 export var speed: = 200.0
@@ -15,7 +16,9 @@ export var frames: SpriteFrames
 
 func _ready():
 	Global.connect("player_selected", self, "_on_player_selected")
+	Global.connect("object_picked", self, "_on_object_picked")
 	$AnimatedSprite.frames = frames
+	$ItemSprite.visible = false
 
 func _input(e):
 	if Input.is_action_pressed(id):
@@ -24,9 +27,15 @@ func _input(e):
 func _on_player_selected(old_id: String, new_id: String):
 	selected = (new_id == id)
 	$Particles2D.emitting = selected
+	$Particles2D.process_material.color = color
+
+func _on_object_picked(object: Node2D, player_id: String):
+	if item.empty() and player_id == id:
+		item = object.id
+		$ItemSprite.texture = object.texture
+		$ItemSprite.visible = true
 
 func _integrate_forces(state: Physics2DDirectBodyState):
-	
 	var is_on_ground := false 
 	var touch_right := false
 	var touch_left := false

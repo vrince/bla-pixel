@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "Pick",
+"language": "GDScript",
+"path": "res://objects/pick.gd"
+}, {
 "base": "RigidBody2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://characters/player.gd"
 } ]
 _global_script_class_icons={
+"Pick": "",
 "Player": ""
 }
 
