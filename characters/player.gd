@@ -4,7 +4,6 @@ class_name Player
 
 export var id: String = "none"
 export var selected: bool = true
-export var color: Color = Color.white
 export var item: String = ""
 export var stomp_impulse: = 600.0
 export var jump_impulse: = 200.0
@@ -12,12 +11,17 @@ export var speed: = 200.0
 export var ground_speed_delta: = 50.0
 export var air_speed_delta: = 10.0
 
-export var frames: SpriteFrames
+var player_state : String = ""
+var sprite : AnimatedSprite
+var particle : Particles2D
 
 func _ready():
 	Global.connect("player_selected", self, "_on_player_selected")
 	Global.connect("object_picked", self, "_on_object_picked")
-	$AnimatedSprite.frames = frames
+	sprite = get_node("AnimatedSprite") as AnimatedSprite
+	particle = get_node("Particles2D") as Particles2D
+	if particle:
+		particle.emitting = false
 	$ItemSprite.visible = false
 
 func _input(e):
@@ -26,8 +30,8 @@ func _input(e):
 
 func _on_player_selected(old_id: String, new_id: String):
 	selected = (new_id == id)
-	$Particles2D.emitting = selected
-	$Particles2D.process_material.color = color
+	if particle:
+		particle.emitting = selected
 
 func _on_object_picked(object: Node2D, player_id: String):
 	if item.empty() and player_id == id:
@@ -41,7 +45,7 @@ func _integrate_forces(state: Physics2DDirectBodyState):
 	var touch_left := false
 	
 	for i in range(state.get_contact_count()):
-		is_on_ground = is_on_ground || state.get_contact_local_normal(i).y < -0.9
+		is_on_ground = is_on_ground || state.get_contact_local_normal(i).y < -0.1
 		touch_right = touch_right || state.get_contact_local_normal(i).x < -0.9
 		touch_left = touch_left || state.get_contact_local_normal(i).x > 0.9
 	
@@ -63,12 +67,14 @@ func _integrate_forces(state: Physics2DDirectBodyState):
 			state.linear_velocity.x -= air_speed_delta
 	state.linear_velocity.x = clamp(state.linear_velocity.x, -speed, speed)
 	
-	$AnimatedSprite.playing = true 
 	if state.linear_velocity.x > 10:
-		$AnimatedSprite.flip_h = false
+		player_state = "moving_right"
 	elif state.linear_velocity.x < -10:
-		$AnimatedSprite.flip_h = true
+		player_state = "moving_left"
 	else:
-		$AnimatedSprite.playing = false
-		$AnimatedSprite.frame = 0
+		player_state = ""
+		
+	if sprite:
+		sprite.playing = ("moving" in player_state)
+		sprite.flip_h = ("left" in player_state)
 	
