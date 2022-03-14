@@ -149,6 +149,10 @@ jump={
 2d_physics/layer_5="bonus"
 2d_physics/layer_6="enemy"
 
+[physics]
+
+common/physics_fps=200
+
 [rendering]
 
 2d/snapping/use_gpu_pixel_snap=true

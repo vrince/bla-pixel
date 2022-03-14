@@ -15,6 +15,7 @@ gravity_scale = 10.0
 continuous_cd = 2
 contacts_reported = 4
 contact_monitor = true
+linear_damp = 0.1
 script = ExtResource( 2 )
 speed = 100.0
 ground_speed_delta = 20.0
@@ -26,3 +27,12 @@ shape = SubResource( 7 )
 [node name="ItemSprite" type="Sprite" parent="."]
 position = Vector2( 0, -8 )
 z_index = 1
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -1.37091e-06, 0.999999 )
+scale = Vector2( 2.1, 2.1 )
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="viewport_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_exited"]

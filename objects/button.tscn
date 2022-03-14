@@ -33,7 +33,7 @@ radial_accel_random = 0.2
 tangential_accel = 10.0
 tangential_accel_random = 0.16
 scale = 2.0
-color = Color( 0.960784, 0.364706, 0.364706, 1 )
+color = Color( 0.960784, 0.364706, 0.364706, 0.501961 )
 
 [node name="Button" type="StaticBody2D"]
 script = ExtResource( 2 )
