@@ -5,5 +5,5 @@ func _ready():
 	Global.connect("player_selected", self, "_on_player_selected")
 
 func _on_player_selected(old_id: String, new_id: String):
-	$PlayerName.text = new_id
+	$PanelContainer/PlayerLabel.text = new_id
 

@@ -11,8 +11,8 @@ func _ready():
 	texture = $AnimatedSprite.frames.get_frame(type, 0)
 
 func _on_Area2D_body_entered(body):
-	print(body)
-	var player = body as Player
-	if player:
-		Global.pick_object(self, player.id)
-		queue_free()
+	if visible && get_parent().visible:
+		var player = body as Player
+		if player:
+			Global.emit_signal("item_picked", self, player.id)
+			queue_free()

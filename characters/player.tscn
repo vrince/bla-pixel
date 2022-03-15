@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://characters/player.gd" type="Script" id=2]
 
@@ -6,6 +6,9 @@
 friction = 0.5
 
 [sub_resource type="CircleShape2D" id=7]
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 8.0
 
 [node name="Player" type="RigidBody2D"]
 collision_mask = 53
@@ -33,6 +36,24 @@ z_index = 1
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( -1.37091e-06, 0.999999 )
 scale = Vector2( 2.1, 2.1 )
+
+[node name="Area2DGround" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DGround"]
+position = Vector2( 0, 9 )
+shape = SubResource( 8 )
+
+[node name="Area2DLeft" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DLeft"]
+position = Vector2( -6, 1 )
+shape = SubResource( 8 )
+
+[node name="Area2DRight" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DRight"]
+position = Vector2( 5, 1 )
+shape = SubResource( 8 )
 
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="viewport_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_exited"]

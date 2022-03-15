@@ -43,7 +43,6 @@ shape = SubResource( 3 )
 texture = ExtResource( 2 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
-position = Vector2( 0, 4 )
 amount = 200
 lifetime = 3.0
 speed_scale = 1.5

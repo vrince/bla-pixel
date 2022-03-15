@@ -26,8 +26,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="bla-pixel"
+config/name="BLA pixel"
 run/main_scene="res://main.tscn"
+boot_splash/use_filter=false
 config/icon="res://icon.png"
 
 [autoload]
@@ -36,12 +37,13 @@ Global="*res://global.tscn"
 
 [display]
 
-window/size/width=480
+window/size/width=486
 window/size/height=270
-window/size/test_width=960
-window/size/test_height=540
+window/size/always_on_top=true
+window/size/test_width=1458
+window/size/test_height=810
 window/stretch/mode="viewport"
-window/stretch/aspect="expand"
+window/stretch/aspect="keep"
 
 [importer_defaults]
 

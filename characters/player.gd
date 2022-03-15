@@ -20,7 +20,8 @@ var reset := false
 func _ready():
 	
 	Global.connect("player_selected", self, "_on_player_selected")
-	Global.connect("object_picked", self, "_on_object_picked")
+	Global.connect("item_picked", self, "_on_item_picked")
+	Global.connect("item_consumed", self, "_on_item_consumed")
 	Global.connect("player_exited", self, "_on_player_exited")
 	Global.connect("start_new_level", self, "_on_start_new_level")
 	
@@ -31,8 +32,6 @@ func _ready():
 	$ItemSprite.visible = false
 	
 	original_position = get_global_position()
-	print(id, " original position ", original_position)
-	
 	appear()
 
 func _input(e):
@@ -44,21 +43,25 @@ func _on_player_selected(old_id: String, new_id: String):
 	if particle:
 		particle.emitting = selected
 
-func _on_object_picked(object: Node2D, player_id: String):
+func _on_item_picked(object: Node2D, player_id: String):
 	if item.empty() and player_id == id:
 		item = object.id
 		$ItemSprite.texture = object.texture
 		$ItemSprite.visible = true
+
+func _on_item_consumed(object: Node2D, player_id: String):
+	if player_id == id:
+		item = ""
+		$ItemSprite.visible = false
 
 func _on_player_exited(player_id: String):
 	if player_id == id:
 		disappear()
 
 func _on_start_new_level(level: String):
-	print("_on_start_new_level ", id, " ", level, " pos ", position)
+	pass
 
 func _on_VisibilityNotifier2D_viewport_exited(viewport):
-	print("viewport exist ", id, " go back to ", original_position)
 	reset = true
 	scale = Vector2(0,0)
 
@@ -69,16 +72,24 @@ func _integrate_forces(state: Physics2DDirectBodyState):
 		set_global_position(original_position)
 		reset = false
 	
-	var is_on_ground := false 
-	var touch_right := false
-	var touch_left := false
+	#var is_on_ground := false 
 	var jumping = state.linear_velocity.y < -10
 	
-	for i in range(state.get_contact_count()):
-		is_on_ground = is_on_ground || state.get_contact_local_normal(i).y < -0.1
-		touch_right = touch_right || state.get_contact_local_normal(i).x < -0.9
-		touch_left = touch_left || state.get_contact_local_normal(i).x > 0.9
-	
+	#for i in range(state.get_contact_count()):
+	#	is_on_ground = is_on_ground || state.get_contact_local_normal(i).y < -0.1
+		
+	var is_on_ground = len($Area2DGround.get_overlapping_bodies()) > 1
+
+	var touch_right = false
+	for body in $Area2DRight.get_overlapping_bodies():
+		if body is TileMap:
+			touch_right = true
+
+	var touch_left = false
+	for body in $Area2DLeft.get_overlapping_bodies():
+		if body is TileMap:
+			touch_left = true
+
 	var jump = (selected and Input.is_action_pressed("jump")) or Input.is_action_pressed(id + "_jump")
 	var right = (selected and Input.get_action_strength("ui_right")) or Input.is_action_pressed(id + "_right")
 	var left = (selected and Input.get_action_strength("ui_left")) or Input.is_action_pressed(id + "_left")
@@ -86,9 +97,9 @@ func _integrate_forces(state: Physics2DDirectBodyState):
 	if is_on_ground:
 		if not jumping and jump:
 			apply_central_impulse(Vector2.UP * jump_impulse)
-		if not touch_right and right:
+		if right:
 			state.linear_velocity.x += ground_speed_delta
-		if not touch_right and left:
+		if left:
 			state.linear_velocity.x -= ground_speed_delta
 	else:
 		if not touch_right and right:
@@ -102,7 +113,7 @@ func _integrate_forces(state: Physics2DDirectBodyState):
 	elif state.linear_velocity.x < -10:
 		player_state = "moving_left"
 	else:
-		player_state = ""
+		player_state = player_state.replace("moving_", "")
 		
 	if sprite:
 		sprite.playing = ("moving" in player_state)
@@ -119,4 +130,3 @@ func disappear():
 	tween.start()
 	yield(tween, "tween_completed")
 	queue_free()
-

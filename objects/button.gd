@@ -7,5 +7,4 @@ func _on_Area2D_body_entered(body):
 		if $AnimatedSprite.animation != "pressed":
 			$Particles2D.emitting = true
 			$AnimatedSprite.animation = "pressed"
-			Global.press_button(id)
-		
+			Global.emit_signal("button_pressed", id, body.id)
