@@ -6,6 +6,7 @@ var level : int = 0
 var levels := [
 	"main.tscn",
 	"levels/level-0.tscn",
+	"levels/mountain/level-0.tscn",
 	"levels/level-1.tscn"
 ]
 

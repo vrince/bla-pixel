@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/Tiles/platform-1.png" type="Texture" id=1]
+[ext_resource path="res://objects/vertical-platform.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 26, 4 )
+
+[node name="Platform" type="Node2D"]
+
+[node name="vertical-platform" type="RigidBody2D" parent="."]
+collision_layer = 4
+collision_mask = 17
+mode = 2
+script = ExtResource( 2 )
+
+[node name="Platform-1" type="Sprite" parent="vertical-platform"]
+position = Vector2( -10, 8 )
+texture = ExtResource( 1 )
+offset = Vector2( -8, -8 )
+
+[node name="Platform-2" type="Sprite" parent="vertical-platform"]
+position = Vector2( 8, 8 )
+texture = ExtResource( 1 )
+offset = Vector2( -8, -8 )
+
+[node name="Platform-3" type="Sprite" parent="vertical-platform"]
+position = Vector2( 26, 8 )
+texture = ExtResource( 1 )
+offset = Vector2( -8, -8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="vertical-platform"]
+position = Vector2( 0, -4 )
+shape = SubResource( 1 )
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
+position = Vector2( 0, -54 )
+node_a = NodePath("../StaticBody2D")
+node_b = NodePath("../vertical-platform")
+stiffness = 50.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 0, -54 )
