@@ -39,7 +39,7 @@ color = Color( 0.960784, 0.364706, 0.364706, 0.501961 )
 script = ExtResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -10, 10, -8, 5, -4, 1, 0, 0, 4, 1, 8, 5, 10, 10 )
+polygon = PoolVector2Array( -8, 10, -8, 5, -5, 3, 0, 2, 5, 3, 8, 5, 8, 10 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )

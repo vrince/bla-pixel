@@ -8,7 +8,7 @@ friction = 0.5
 [sub_resource type="CircleShape2D" id=7]
 
 [sub_resource type="CircleShape2D" id=8]
-radius = 8.0
+radius = 7.0
 
 [sub_resource type="ParticlesMaterial" id=9]
 emission_shape = 5
@@ -43,7 +43,7 @@ shape = SubResource( 7 )
 
 [node name="ItemSprite" type="Sprite" parent="."]
 position = Vector2( 0, -8 )
-z_index = 1
+z_index = 2
 
 [node name="Tween" type="Tween" parent="."]
 
@@ -54,7 +54,7 @@ scale = Vector2( 2.1, 2.1 )
 [node name="Area2DGround" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DGround"]
-position = Vector2( 0, 9 )
+position = Vector2( 0, 7 )
 shape = SubResource( 8 )
 
 [node name="Area2DLeft" type="Area2D" parent="."]
@@ -70,7 +70,7 @@ position = Vector2( 5, 1 )
 shape = SubResource( 8 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
-z_index = 1
+z_index = 2
 amount = 80
 process_material = SubResource( 9 )
 

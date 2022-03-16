@@ -41,4 +41,5 @@ local_coords = false
 process_material = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
+z_index = 1
 frames = SubResource( 1 )
