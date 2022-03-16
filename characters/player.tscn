@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://characters/player.gd" type="Script" id=2]
 
@@ -9,6 +9,20 @@ friction = 0.5
 
 [sub_resource type="CircleShape2D" id=8]
 radius = 8.0
+
+[sub_resource type="ParticlesMaterial" id=9]
+emission_shape = 5
+emission_ring_radius = 20.0
+emission_ring_inner_radius = 19.0
+emission_ring_height = 1.0
+emission_ring_axis = Vector3( 0, 0, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = 5.0
+radial_accel_random = 0.5
+color = Color( 1, 1, 1, 0.501961 )
 
 [node name="Player" type="RigidBody2D"]
 collision_mask = 53
@@ -54,6 +68,11 @@ shape = SubResource( 8 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DRight"]
 position = Vector2( 5, 1 )
 shape = SubResource( 8 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+z_index = 1
+amount = 80
+process_material = SubResource( 9 )
 
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="viewport_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_exited"]

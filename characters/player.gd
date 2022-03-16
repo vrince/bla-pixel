@@ -26,10 +26,9 @@ func _ready():
 	Global.connect("start_new_level", self, "_on_start_new_level")
 	
 	sprite = get_node("AnimatedSprite") as AnimatedSprite
-	particle = get_node("Particles2D") as Particles2D
-	if particle:
-		particle.emitting = false
 	$ItemSprite.visible = false
+	
+	$Particles2D.emitting = false
 	
 	original_position = get_global_position()
 	appear()
@@ -40,8 +39,7 @@ func _input(e):
 
 func _on_player_selected(old_id: String, new_id: String):
 	selected = (new_id == id)
-	if particle:
-		particle.emitting = selected
+	$Particles2D.emitting = selected
 
 func _on_item_picked(object: Node2D, player_id: String):
 	if item.empty() and player_id == id:
