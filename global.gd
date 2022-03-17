@@ -4,14 +4,16 @@ var selected_player : String = ""
 var level : int = 0
 
 var levels := [
-	"main.tscn",
 	"levels/level-0.tscn",
+	"levels/level-1.tscn",
+	"levels/level-2.tscn",
 	"levels/mountain/level-0.tscn",
-	"levels/level-1.tscn"
+	"levels/mountain/level-1.tscn"
 ]
 
 signal player_selected(old_id, player_id)
 signal button_pressed(button_id, player_id)
+signal button_released(button_id, player_id)
 signal item_picked(item, player_id)
 signal item_consumed(item, player_id)
 signal player_exited(player_id)

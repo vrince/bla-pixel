@@ -1,71 +1,71 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://objects/exit.tscn" type="PackedScene" id=1]
-[ext_resource path="res://tileset.tres" type="TileSet" id=2]
-[ext_resource path="res://objects/box.tscn" type="PackedScene" id=3]
-[ext_resource path="res://characters/bastien.tscn" type="PackedScene" id=4]
-[ext_resource path="res://characters/lucille.tscn" type="PackedScene" id=5]
-[ext_resource path="res://characters/adeline.tscn" type="PackedScene" id=6]
-[ext_resource path="res://objects/lock.tscn" type="PackedScene" id=7]
-[ext_resource path="res://main.gd" type="Script" id=8]
-[ext_resource path="res://assets/Background/backgroundForest.png" type="Texture" id=16]
-[ext_resource path="res://objects/button.tscn" type="PackedScene" id=17]
-[ext_resource path="res://objects/key.tscn" type="PackedScene" id=18]
-[ext_resource path="res://hud.tscn" type="PackedScene" id=19]
+[ext_resource path="res://tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://characters/lucille.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/Background/backgroundForest.png" type="Texture" id=3]
+[ext_resource path="res://characters/adeline.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/button.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/exit.tscn" type="PackedScene" id=6]
+[ext_resource path="res://characters/bastien.tscn" type="PackedScene" id=7]
+[ext_resource path="res://objects/key.tscn" type="PackedScene" id=8]
+[ext_resource path="res://hud.tscn" type="PackedScene" id=9]
+[ext_resource path="res://levels/level-2.gd" type="Script" id=10]
+[ext_resource path="res://objects/lock.tscn" type="PackedScene" id=11]
+[ext_resource path="res://objects/box.tscn" type="PackedScene" id=12]
 
-[node name="main" type="Node2D"]
-script = ExtResource( 8 )
+[node name="level-2" type="Node2D"]
+script = ExtResource( 10 )
 
 [node name="BackgroundForest" type="Sprite" parent="."]
 position = Vector2( 232, 135 )
 scale = Vector2( 0.583008, 0.583008 )
-texture = ExtResource( 16 )
+texture = ExtResource( 3 )
 
 [node name="Back" type="TileMap" parent="."]
-tile_set = ExtResource( 2 )
+tile_set = ExtResource( 1 )
 cell_size = Vector2( 18, 18 )
 format = 1
 tile_data = PoolIntArray( -131060, 1073741824, 327696, -65524, 1073741824, 327696, 12, 1073741824, 262160, 65548, 1073741824, 327696, 131084, 1073741824, 327696, 196620, 1073741824, 327696, 196627, 536870912, 327696, 262156, 1073741824, 393234, 262157, 1073741824, 393235, 327692, 1073741824, 327696, 393228, 1073741824, 327696, 458771, 536870912, 327696, 524300, 536870912, 327696, 589836, 536870912, 327696, 655372, 536870912, 327696, 655379, 536870912, 327696, 720907, 0, 327698, 720908, 536870912, 393234, 786444, 536870912, 327696, 851980, 536870912, 393233 )
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = ExtResource( 2 )
+tile_set = ExtResource( 1 )
 cell_size = Vector2( 18, 18 )
 format = 1
 tile_data = PoolIntArray( -262144, 0, 393219, -262118, 0, 65553, -196608, 0, 393219, -196582, 0, 65553, -131072, 0, 393219, -131053, 0, 327696, -131046, 0, 65553, -65536, 0, 458755, -65517, 0, 327696, -65510, 0, 65553, 65535, 1073741824, 393229, 0, 1073741824, 393229, 1, 0, 262158, 19, 0, 327696, 26, 0, 65553, 27, -1610612736, 65554, 131071, 1073741824, 458754, 65536, 1073741824, 458755, 65537, 1073741824, 262159, 65555, 0, 327696, 65562, 0, 65553, 65563, -1610612736, 65554, 196607, 0, 393218, 131072, 0, 393219, 131073, 0, 131087, 131079, 0, 262148, 131091, 0, 327696, 131098, 0, 65553, 131099, -1610612736, 65554, 262143, 0, 393218, 196608, 0, 393219, 196609, 0, 131086, 196611, 0, 14, 196612, 0, 13, 196613, 0, 12, 196614, 0, 13, 196615, 0, 15, 196623, 0, 196625, 196624, 0, 196626, 196625, 0, 196626, 196626, 0, 196626, 196627, 0, 196626, 196628, 0, 196627, 196634, 0, 131089, 196635, 0, 131090, 327679, 0, 393218, 262144, 0, 393219, 262145, 0, 131086, 262149, 1073741824, 65548, 262163, 0, 327696, 262168, 0, 196625, 262169, 0, 196626, 262170, 0, 196626, 262171, 0, 196626, 393215, 0, 393218, 327680, 0, 393219, 327681, 0, 131086, 327685, 0, 65548, 327698, 0, 262162, 327699, 0, 327697, 327700, 0, 393235, 327706, 0, 6, 327707, 0, 6, 458751, 0, 393218, 393216, 0, 393219, 393217, 0, 131086, 393221, 0, 131084, 393227, 0, 17, 393228, 0, 18, 393229, 0, 19, 393235, 0, 327696, 393242, 0, 17, 393243, 0, 18, 524287, 0, 393218, 458752, 0, 393219, 458753, 0, 131087, 458757, 0, 131084, 458763, 0, 131089, 458764, 0, 262161, 458765, 0, 131091, 458770, 0, 196625, 458771, 0, 196626, 458772, 0, 196626, 458773, 0, 196626, 458774, 0, 196627, 458778, 0, 65553, 458779, -1610612736, 65554, 589823, 0, 393218, 524288, 0, 393219, 524289, 0, 131087, 524293, 0, 65548, 524307, 0, 262160, 524314, 0, 65553, 524315, 0, 65554, 655359, 0, 393218, 589824, 0, 393219, 589825, 0, 196623, 589826, 0, 393225, 589827, 0, 393225, 589828, 0, 393225, 589829, 0, 196620, 589830, 0, 393221, 589832, 0, 393224, 589843, 0, 393234, 589844, 536870912, 262162, 589850, 0, 65553, 589851, 0, 65554, 720895, 0, 393218, 655360, 0, 65540, 655361, 1610612736, 458754, 655362, -1073741824, 393216, 655363, -1073741824, 393216, 655364, -1073741824, 393216, 655365, -1073741824, 393216, 655366, -1073741824, 393216, 655367, -1073741824, 393216, 655368, -1073741824, 458752, 655374, 0, 196625, 655375, 0, 196626, 655376, 0, 196626, 655377, 0, 196626, 655378, 0, 196626, 655379, 0, 196626, 655380, 0, 196627, 655386, 0, 65553, 655387, 0, 65554, 786431, 0, 393218, 720896, 0, 393218, 720897, 0, 393219, 720899, 1073741824, 393224, 720901, 1073741824, 393221, 720904, 1610612736, 327685, 720907, 0, 196625, 720908, 0, 196626, 720909, 0, 196627, 720915, 0, 327696, 720922, 0, 65553, 720923, -1610612736, 65554, 851967, 0, 393218, 786432, 0, 393218, 786433, 0, 393219, 786451, 0, 327696, 786458, 0, 65553, 786459, -1610612736, 65554, 917503, 0, 393218, 851968, 0, 393218, 851969, 0, 393219, 851976, 536870912, 327690, 851985, 0, 262149, 851987, 0, 393233, 851990, 0, 327685, 851994, 0, 65553, 851995, -1610612736, 65554, 983039, 0, 65538, 917504, 0, 65538, 917505, 0, 65538, 917506, 0, 65538, 917507, 0, 65538, 917508, 0, 65538, 917509, 0, 65538, 917510, 0, 65538, 917511, 0, 65538, 917512, 0, 65538, 917513, 0, 65538, 917514, 0, 65538, 917515, 0, 65538, 917516, 0, 65538, 917517, 0, 65538, 917518, 0, 65538, 917519, 0, 65538, 917520, 0, 65538, 917521, 0, 65538, 917522, 0, 65538, 917523, 0, 65538, 917524, 0, 65538, 917525, 0, 65538, 917526, 0, 65538, 917527, 0, 65538, 917528, 0, 65538, 917529, 0, 65538, 917530, 0, 65538, 917531, 0, 65538, 917532, 0, 65538 )
 
-[node name="Box" parent="." instance=ExtResource( 3 )]
+[node name="Box" parent="." instance=ExtResource( 12 )]
 position = Vector2( 137, 171 )
 physics_material_override = null
 
-[node name="Box2" parent="." instance=ExtResource( 3 )]
+[node name="Box2" parent="." instance=ExtResource( 12 )]
 position = Vector2( 295, 47 )
 mass = 1.0
 physics_material_override = null
 
-[node name="Button" parent="." instance=ExtResource( 17 )]
+[node name="Button" parent="." instance=ExtResource( 5 )]
 position = Vector2( 288, 243 )
 
-[node name="Key" parent="." instance=ExtResource( 18 )]
+[node name="Key" parent="." instance=ExtResource( 8 )]
 position = Vector2( 445, 65 )
 id = "key-1"
 
-[node name="Bastien" parent="." instance=ExtResource( 4 )]
+[node name="Bastien" parent="." instance=ExtResource( 7 )]
 position = Vector2( 50, 241 )
 
-[node name="Lucille" parent="." instance=ExtResource( 5 )]
+[node name="Lucille" parent="." instance=ExtResource( 2 )]
 position = Vector2( 91, 241 )
 
-[node name="Adeline" parent="." instance=ExtResource( 6 )]
+[node name="Adeline" parent="." instance=ExtResource( 4 )]
 position = Vector2( 131, 241 )
 
-[node name="Exit" parent="." instance=ExtResource( 1 )]
+[node name="Exit" parent="." instance=ExtResource( 6 )]
 position = Vector2( 454, 245 )
 
-[node name="Lock" parent="." instance=ExtResource( 7 )]
+[node name="Lock" parent="." instance=ExtResource( 11 )]
 position = Vector2( 91, 47 )
 id = "key-1"
 
-[node name="Hud" parent="." instance=ExtResource( 19 )]
+[node name="Hud" parent="." instance=ExtResource( 9 )]
 margin_left = 228.0
 margin_top = 271.0
 margin_right = 228.0
