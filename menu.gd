@@ -12,6 +12,7 @@ func _ready():
 func _on_Button_pressed():
 	var selected_items = $ItemList.get_selected_items()
 	if len(selected_items) > 0:
-		var level = Global.levels[selected_items[0]]
-		get_tree().change_scene(level)
-		emit_signal("start_new_level", level)
+		Global.level = selected_items[0]
+		var level_scene = Global.levels[Global.level]
+		get_tree().change_scene(level_scene)
+		emit_signal("start_new_level", level_scene)

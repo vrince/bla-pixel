@@ -8,3 +8,4 @@ func _ready():
 func _on_button_pressed(button_id, player_id):
 	$Platform/DampedSpringJoint2D.stiffness = 500
 	$Platform2/DampedSpringJoint2D.stiffness = 500
+

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://menu.gd" type="Script" id=1]
 [ext_resource path="res://characters/bastien.tscn" type="PackedScene" id=2]
@@ -17,7 +17,8 @@ corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
-shadow_size = 10
+shadow_color = Color( 0.717647, 0.905882, 0.980392, 1 )
+shadow_size = 5
 
 [sub_resource type="StyleBoxFlat" id=1]
 content_margin_left = 10.0
@@ -33,6 +34,22 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 shadow_color = Color( 0, 0, 0, 0.196078 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.443137, 0.666667, 0.203922, 1 )
+border_color = Color( 0.443137, 0.666667, 0.203922, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.796078, 0.505882, 0.368627, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_size = 4
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -60,6 +77,9 @@ margin_left = 411.0
 margin_top = 181.0
 margin_right = 457.0
 margin_bottom = 213.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/normal = SubResource( 4 )
 text = "Go !"
 
 [node name="Label" type="Label" parent="."]
