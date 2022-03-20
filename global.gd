@@ -8,6 +8,7 @@ var levels := [
 	"levels/level-1.tscn",
 	"levels/level-2.tscn",
 	"levels/level-3.tscn",
+	"levels/level-4.tscn",
 	"levels/mountain/level-0.tscn",
 	"levels/mountain/level-1.tscn",
 	"levels/desert/level-0.tscn"

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/light.png" type="Texture" id=1]
+[ext_resource path="res://assets/Tiles/diamond.png" type="Texture" id=2]
+[ext_resource path="res://objects/diamond.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[node name="Diamond" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Diamond" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 1 )
+texture_scale = 0.25
+color = Color( 0.172549, 0.772549, 0.964706, 1 )
+energy = 2.0
+shadow_enabled = true
+shadow_gradient_length = 1.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

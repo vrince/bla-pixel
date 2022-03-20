@@ -15,6 +15,7 @@ var player_state : String = ""
 var sprite : AnimatedSprite
 var particle : Particles2D
 var original_position : Vector2
+var original_scale : Vector2
 var reset := false
 
 func _ready():
@@ -29,7 +30,9 @@ func _ready():
 	$Particles2D.emitting = false
 	
 	original_position = get_global_position()
-	appear()
+	original_scale = get_parent().scale
+	print(original_scale)
+	#appear()
 	_on_player_selected("", Global.selected_player)
 
 func _input(e):
@@ -114,12 +117,12 @@ func _integrate_forces(state: Physics2DDirectBodyState):
 	  
 func appear():
 	var tween = $Tween
-	tween.interpolate_property(self, "scale", Vector2(0,0), Vector2(1,1), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.interpolate_property(self, "scale", Vector2(0,0), original_scale, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
 	
 func disappear():
 	var tween = $Tween
-	tween.interpolate_property(self, "scale", Vector2(1,1), Vector2(0,0), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.interpolate_property(self, "scale", original_scale, Vector2(0,0), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
 	yield(tween, "tween_completed")
 	queue_free()
