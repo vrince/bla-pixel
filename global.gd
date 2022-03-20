@@ -7,6 +7,7 @@ var levels := [
 	"levels/level-0.tscn",
 	"levels/level-1.tscn",
 	"levels/level-2.tscn",
+	"levels/level-3.tscn",
 	"levels/mountain/level-0.tscn",
 	"levels/mountain/level-1.tscn",
 	"levels/desert/level-0.tscn"
@@ -22,13 +23,18 @@ signal level_finished()
 signal start_new_level(level_name)
 
 func _ready():
+	select_player("bastien")
 	connect("level_finished", self, "_on_level_finished")
 
 func select_player(player_id: String):
-	if(player_id != selected_player):
-		var old_id = selected_player
-		selected_player = player_id
-		emit_signal("player_selected", old_id, selected_player)
+	var old_id = selected_player
+	selected_player = player_id
+	emit_signal("player_selected", old_id, selected_player)
+
+func change_scene(scene: String):
+	get_tree().change_scene(scene)
+	emit_signal("start_new_level", scene)
+	select_player("bastien")
 
 func _input(event):
 	if event.is_action_pressed("ui_end"):
@@ -39,8 +45,7 @@ func _on_level_finished():
 	print(level)
 	if level < len(levels):
 		var next_level = levels[level]
-		get_tree().change_scene(next_level)
-		emit_signal("start_new_level", next_level)
+		change_scene(next_level)
 	else:
-		get_tree().change_scene("res://menu.tscn")
+		change_scene("res://menu.tscn")
 

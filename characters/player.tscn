@@ -1,11 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://characters/player.gd" type="Script" id=2]
 
 [sub_resource type="PhysicsMaterial" id=6]
 friction = 0.5
-
-[sub_resource type="CircleShape2D" id=7]
 
 [sub_resource type="CircleShape2D" id=8]
 radius = 7.0
@@ -37,9 +35,8 @@ script = ExtResource( 2 )
 speed = 100.0
 ground_speed_delta = 20.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 2 )
-shape = SubResource( 7 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 0, 10, 4, 10, 6, 8, 7, 6, 8, 3, 8, -11, -8, -11, -8, 3, -7, 6, -6, 8, -4, 10 )
 
 [node name="ItemSprite" type="Sprite" parent="."]
 position = Vector2( 0, -8 )
@@ -48,7 +45,7 @@ z_index = 2
 [node name="Tween" type="Tween" parent="."]
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
-position = Vector2( -1.37091e-06, 0.999999 )
+position = Vector2( 1.13687e-13, 1 )
 scale = Vector2( 2.1, 2.1 )
 
 [node name="Area2DGround" type="Area2D" parent="."]

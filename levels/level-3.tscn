@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://characters/bastien.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/exit.tscn" type="PackedScene" id=3]
+[ext_resource path="res://characters/adeline.tscn" type="PackedScene" id=4]
+[ext_resource path="res://characters/lucille.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/Background/backgroundEmpty.png" type="Texture" id=6]
+[ext_resource path="res://levels/level-3.gd" type="Script" id=7]
+[ext_resource path="res://objects/button.tscn" type="PackedScene" id=8]
+[ext_resource path="res://objects/box.tscn" type="PackedScene" id=9]
+
+[node name="LevelTemplate" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="BackGround" type="Sprite" parent="."]
+position = Vector2( 256, 140 )
+scale = Vector2( 0.6875, 0.541504 )
+texture = ExtResource( 6 )
+
+[node name="TileMap2" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 18, 18 )
+collision_layer = 4
+format = 1
+tile_data = PoolIntArray( -65522, 0, 327696, 14, 0, 327696, 23, 0, 327696, 65550, 0, 327696, 65559, 0, 262160, 131086, 0, 327696, 131095, 0, 327696, 196622, 0, 327696, 196631, 0, 327696, 262158, 0, 327696, 262167, 0, 327696, 327694, 0, 327696, 327703, 0, 327696, 393230, 0, 327696, 393239, 0, 262160, 458766, 0, 262160, 458775, 0, 327696, 524302, 0, 327696, 524311, 0, 327696, 589830, 0, 327696, 589838, 0, 327696, 589847, 0, 327696, 655366, 0, 327696, 655374, 0, 327696, 655383, 0, 262160, 720902, 0, 327696, 720910, 0, 327696, 720919, 0, 327696, 786438, 0, 327696, 786444, 0, 327698, 786445, 0, 262163, 786446, 0, 327697, 786447, 0, 327699, 786448, 0, 393235, 786455, 0, 327696, 851974, 0, 393233, 851982, 0, 393233, 851991, 0, 393233 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 18, 18 )
+collision_layer = 4
+format = 1
+tile_data = PoolIntArray( 14, 0, 196625, 15, 0, 196627, 23, 0, 16, 131094, 0, 196625, 131095, 0, 196626, 131096, 0, 196627, 262157, 0, 17, 262158, 0, 18, 262159, 0, 18, 262160, 0, 19, 327693, 0, 131089, 327694, 0, 262161, 327695, 0, 131090, 327696, 0, 131091, 327701, 0, 196625, 327702, 0, 196626, 327703, 0, 196626, 327704, 0, 196626, 327705, 0, 196627, 393221, 0, 17, 393222, 0, 18, 393223, 0, 19, 458757, 0, 65553, 458758, 0, 65554, 458759, 0, 65555, 524293, 0, 131089, 524294, 0, 262161, 524295, 0, 131091, 524299, 0, 17, 524300, 0, 18, 524301, 0, 18, 524302, 0, 18, 524303, 0, 18, 524304, 0, 19, 524308, 0, 196625, 524309, 0, 196626, 524310, 0, 196626, 524311, 0, 196626, 524312, 0, 196626, 524313, 0, 196626, 524314, 0, 196627, 589835, 0, 65553, 589836, 0, 65554, 589837, 0, 65554, 589838, 0, 65554, 589839, 0, 65554, 589840, 0, 65555, 655371, 0, 131089, 655372, 0, 131090, 655373, 0, 131090, 655374, 0, 262161, 655375, 0, 131090, 655376, 0, 131091, 720915, 0, 196625, 720916, 0, 196626, 720917, 0, 196626, 720918, 0, 196626, 720919, 0, 196626, 720920, 0, 196626, 720921, 0, 196626, 720922, 0, 196626, 851968, 0, 393220, 851976, 0, 393221, 851987, 0, 393221, 851988, 0, 393220, 917504, 0, 65538, 917505, 0, 65538, 917506, 0, 65538, 917507, 0, 65538, 917508, 0, 65538, 917509, 0, 65538, 917510, 0, 65538, 917511, 0, 65538, 917512, 0, 65538, 917513, 0, 65538, 917514, 0, 65538, 917515, 0, 65538, 917516, 0, 65538, 917517, 0, 65538, 917518, 0, 65538, 917519, 0, 65538, 917520, 0, 65538, 917521, 0, 65538, 917522, 0, 65538, 917523, 0, 65538, 917524, 0, 65538, 917525, 0, 65538, 917526, 0, 65538, 917527, 0, 65538, 917528, 0, 65538, 917529, 0, 65538, 917530, 0, 65538 )
+
+[node name="Adeline" parent="." instance=ExtResource( 4 )]
+position = Vector2( 30, 215 )
+
+[node name="Box" parent="Adeline" instance=ExtResource( 9 )]
+position = Vector2( 29, 28 )
+
+[node name="Lucille" parent="." instance=ExtResource( 5 )]
+position = Vector2( 59, 215 )
+
+[node name="Box" parent="Lucille" instance=ExtResource( 9 )]
+position = Vector2( 30, 28 )
+
+[node name="Bastien" parent="." instance=ExtResource( 2 )]
+position = Vector2( 89, 215 )
+
+[node name="Exit" parent="." instance=ExtResource( 3 )]
+position = Vector2( 459, 242 )
+
+[node name="Button" parent="." instance=ExtResource( 8 )]
+position = Vector2( 279, 64 )
+
+[node name="TileMapBlock" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 18, 18 )
+collision_layer = 4
+format = 1
+tile_data = PoolIntArray( 16, 0, 10, 65552, 0, 10, 131088, 0, 10, 196624, 0, 10, 393232, 0, 10, 458768, 0, 10, 720912, 0, 10, 786448, 0, 10, 851984, 0, 10 )
+
+[node name="Box" parent="." instance=ExtResource( 9 )]
+position = Vector2( 29, 244 )

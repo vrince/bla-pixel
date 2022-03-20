@@ -14,5 +14,4 @@ func _on_Button_pressed():
 	if len(selected_items) > 0:
 		Global.level = selected_items[0]
 		var level_scene = Global.levels[Global.level]
-		get_tree().change_scene(level_scene)
-		emit_signal("start_new_level", level_scene)
+		Global.change_scene(level_scene)

@@ -18,7 +18,6 @@ var original_position : Vector2
 var reset := false
 
 func _ready():
-	
 	Global.connect("player_selected", self, "_on_player_selected")
 	Global.connect("item_picked", self, "_on_item_picked")
 	Global.connect("item_consumed", self, "_on_item_consumed")
@@ -27,11 +26,11 @@ func _ready():
 	
 	sprite = get_node("AnimatedSprite") as AnimatedSprite
 	$ItemSprite.visible = false
-	
 	$Particles2D.emitting = false
 	
 	original_position = get_global_position()
 	appear()
+	_on_player_selected("", Global.selected_player)
 
 func _input(e):
 	if Input.is_action_pressed(id):
@@ -69,12 +68,8 @@ func _integrate_forces(state: Physics2DDirectBodyState):
 		linear_velocity = Vector2(0,0)
 		set_global_position(original_position)
 		reset = false
-	
-	#var is_on_ground := false 
+
 	var jumping = state.linear_velocity.y < -10
-	
-	#for i in range(state.get_contact_count()):
-	#	is_on_ground = is_on_ground || state.get_contact_local_normal(i).y < -0.1
 		
 	var is_on_ground = len($Area2DGround.get_overlapping_bodies()) > 1
 

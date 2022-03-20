@@ -9,8 +9,8 @@ extents = Vector2( 26, 4 )
 [node name="Platform" type="Node2D"]
 
 [node name="vertical-platform" type="RigidBody2D" parent="."]
-collision_layer = 4
-collision_mask = 17
+collision_layer = 16
+collision_mask = 13
 mode = 2
 script = ExtResource( 2 )
 
@@ -33,11 +33,11 @@ offset = Vector2( -8, -8 )
 position = Vector2( 0, -4 )
 shape = SubResource( 1 )
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 0, -54 )
+
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
 position = Vector2( 0, -54 )
 node_a = NodePath("../StaticBody2D")
 node_b = NodePath("../vertical-platform")
 stiffness = 50.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 0, -54 )
