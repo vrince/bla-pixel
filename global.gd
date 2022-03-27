@@ -2,6 +2,9 @@ extends Node
 
 var selected_player : String = ""
 var level : int = 0
+var start_scene_time : int = -1
+var level_time : int = 300
+var count_down : int = -1
 
 var levels := [
 	"levels/level-0.tscn",
@@ -9,6 +12,7 @@ var levels := [
 	"levels/level-2.tscn",
 	"levels/level-3.tscn",
 	"levels/level-4.tscn",
+	"levels/level-5.tscn",
 	"levels/mountain/level-0.tscn",
 	"levels/mountain/level-1.tscn",
 	"levels/desert/level-0.tscn"
@@ -22,6 +26,7 @@ signal item_consumed(item, player_id)
 signal player_exited(player_id)
 signal level_finished()
 signal start_new_level(level_name)
+signal count_down(level_name)
 
 func _ready():
 	select_player("bastien")
@@ -33,6 +38,8 @@ func select_player(player_id: String):
 	emit_signal("player_selected", old_id, selected_player)
 
 func change_scene(scene: String):
+	start_scene_time = OS.get_unix_time()
+	count_down = -1
 	get_tree().change_scene(scene)
 	emit_signal("start_new_level", scene)
 	select_player("bastien")
@@ -50,3 +57,10 @@ func _on_level_finished():
 	else:
 		change_scene("res://menu.tscn")
 
+func _process(delta):
+	if start_scene_time > 0:
+		var time_elapsed = OS.get_unix_time() - start_scene_time
+		var new_count_down = level_time - time_elapsed
+		if new_count_down != count_down:
+			count_down = new_count_down
+			emit_signal("count_down", count_down)

@@ -1,0 +1,89 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://assets/Characters/unicorn5.png" type="Texture" id=1]
+[ext_resource path="res://assets/Characters/unicorn1.png" type="Texture" id=2]
+[ext_resource path="res://assets/Characters/unicorn2.png" type="Texture" id=3]
+[ext_resource path="res://assets/Characters/unicorn4.png" type="Texture" id=4]
+[ext_resource path="res://assets/Characters/unicorn3.png" type="Texture" id=5]
+[ext_resource path="res://characters/licorne.gd" type="Script" id=6]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0.231729, 0.358289, 0.483066, 0.600713, 0.716578, 0.827094, 0.928699, 1 )
+colors = PoolColorArray( 0.713726, 0.341176, 0.72549, 1, 0.568829, 0.449707, 0.770711, 1, 0.531252, 0.587702, 0.826172, 1, 0.501646, 0.832898, 0.853516, 1, 0.455404, 0.935547, 0.65984, 1, 0.863025, 0.873047, 0.359922, 1, 0.908203, 0.572169, 0.118983, 1, 1, 0, 0, 0.00784314 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+emission_shape = 1
+emission_sphere_radius = 5.0
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 30.0
+gravity = Vector3( 0, 10, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = 200.0
+tangential_accel_random = 1.0
+scale = 2.0
+color_ramp = SubResource( 3 )
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="SegmentShape2D" id=5]
+a = Vector2( -10, -3 )
+b = Vector2( 12, -3 )
+
+[sub_resource type="SegmentShape2D" id=6]
+b = Vector2( 21, 0 )
+
+[node name="Licorne" type="KinematicBody2D"]
+collision_layer = 64
+script = ExtResource( 6 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( 3, 10 )
+amount = 300
+lifetime = 2.0
+local_coords = false
+process_material = SubResource( 4 )
+
+[node name="Particles2D2" type="Particles2D" parent="."]
+position = Vector2( 3, 10 )
+emitting = false
+amount = 300
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+frame = 2
+playing = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -18, 18, -18, 13, -15, 10, 9, 10, 10, -12, 34, -12, 40, -8, 40, 5, 29, 5, 24, 18 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -20, 10 )
+scale = Vector2( 0.75, 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -4, 10 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 12, -15 )
+shape = SubResource( 6 )
+
+[connection signal="viewport_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
