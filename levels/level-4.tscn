@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://characters/bastien.tscn" type="PackedScene" id=2]
@@ -8,7 +8,8 @@
 [ext_resource path="res://assets/Background/backgroundCastles.png" type="Texture" id=6]
 [ext_resource path="res://levels/level-4.gd" type="Script" id=7]
 [ext_resource path="res://objects/diamond.tscn" type="PackedScene" id=8]
-[ext_resource path="res://objects/count_down.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/light.png" type="Texture" id=9]
+[ext_resource path="res://hud.tscn" type="PackedScene" id=10]
 
 [node name="Level4" type="Node2D"]
 modulate = Color( 0.0509804, 0.0509804, 0.0509804, 1 )
@@ -42,29 +43,46 @@ position = Vector2( 459, 189 )
 
 [node name="Diamond2" parent="." instance=ExtResource( 8 )]
 position = Vector2( 386, 79 )
+energy = 3.0
 
 [node name="Diamond3" parent="." instance=ExtResource( 8 )]
 position = Vector2( 110, 118 )
+energy = 3.0
 
 [node name="Diamond4" parent="." instance=ExtResource( 8 )]
 position = Vector2( 134, 26 )
+energy = 3.0
 
 [node name="Diamond5" parent="." instance=ExtResource( 8 )]
 position = Vector2( 134, 224 )
+energy = 3.0
 
 [node name="Diamond" parent="." instance=ExtResource( 8 )]
 position = Vector2( 244, 151 )
+energy = 3.0
 
 [node name="Diamond6" parent="." instance=ExtResource( 8 )]
 position = Vector2( 421, 135 )
+energy = 3.0
 
 [node name="Diamond7" parent="." instance=ExtResource( 8 )]
 position = Vector2( 477, 116 )
+energy = 3.0
 
 [node name="Diamond8" parent="." instance=ExtResource( 8 )]
 position = Vector2( 206, 98 )
+energy = 3.0
 
 [node name="Diamond9" parent="." instance=ExtResource( 8 )]
 position = Vector2( 332, 206 )
+energy = 3.0
 
-[node name="CountDown" parent="." instance=ExtResource( 9 )]
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 70, 338 )
+texture = ExtResource( 9 )
+texture_scale = 0.25
+energy = 2.0
+shadow_enabled = true
+shadow_gradient_length = 0.5
+
+[node name="Hud" parent="." instance=ExtResource( 10 )]

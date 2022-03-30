@@ -64,6 +64,7 @@ func _on_start_new_level(level: String):
 func _on_VisibilityNotifier2D_viewport_exited(viewport):
 	reset = true
 	scale = Vector2(0,0)
+	Global.oups_player(id)
 
 func _integrate_forces(state: Physics2DDirectBodyState):
 	if reset:

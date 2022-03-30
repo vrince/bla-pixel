@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://characters/bastien.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://characters/lucille.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/Background/backgroundColorForest.png" type="Texture" id=6]
 [ext_resource path="res://objects/wind.tscn" type="PackedScene" id=7]
+[ext_resource path="res://hud.tscn" type="PackedScene" id=8]
 
 [node name="Level5" type="Node2D"]
 
@@ -50,3 +51,5 @@ position = Vector2( 332, 200 )
 
 [node name="Wind9" parent="." instance=ExtResource( 7 )]
 position = Vector2( 219, 225 )
+
+[node name="Hud" parent="." instance=ExtResource( 8 )]

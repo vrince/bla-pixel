@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://characters/bastien.tscn" type="PackedScene" id=2]
@@ -7,7 +7,8 @@
 [ext_resource path="res://characters/lucille.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/Background/backgroundColorFall.png" type="Texture" id=6]
 [ext_resource path="res://objects/wind.tscn" type="PackedScene" id=7]
-[ext_resource path="res://objects/count_down.tscn" type="PackedScene" id=8]
+[ext_resource path="res://hud.tscn" type="PackedScene" id=8]
+[ext_resource path="res://objects/diamond.tscn" type="PackedScene" id=9]
 
 [node name="Level-1" type="Node2D"]
 
@@ -40,4 +41,22 @@ position = Vector2( 189, 109 )
 [node name="Wind2" parent="." instance=ExtResource( 7 )]
 position = Vector2( 333, 181 )
 
-[node name="CountDown" parent="." instance=ExtResource( 8 )]
+[node name="Diamond" parent="." instance=ExtResource( 9 )]
+position = Vector2( 38, 112 )
+
+[node name="Diamond2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 399, 59 )
+
+[node name="Diamond3" parent="." instance=ExtResource( 9 )]
+position = Vector2( 259, 116 )
+
+[node name="Diamond4" parent="." instance=ExtResource( 9 )]
+position = Vector2( 80, 61 )
+
+[node name="Diamond5" parent="." instance=ExtResource( 9 )]
+position = Vector2( 155, 183 )
+
+[node name="Diamond6" parent="." instance=ExtResource( 9 )]
+position = Vector2( 238, 27 )
+
+[node name="Hud" parent="." instance=ExtResource( 8 )]

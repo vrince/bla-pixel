@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://characters/bastien.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/exit.tscn" type="PackedScene" id=3]
+[ext_resource path="res://characters/adeline.tscn" type="PackedScene" id=4]
+[ext_resource path="res://characters/lucille.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/Background/backgroundEmpty.png" type="Texture" id=6]
+[ext_resource path="res://objects/key.tscn" type="PackedScene" id=7]
+
+[node name="Level9" type="Node2D"]
+
+[node name="BackGround" type="Sprite" parent="."]
+position = Vector2( 256, 140 )
+scale = Vector2( 0.6875, 0.541504 )
+texture = ExtResource( 6 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 18, 18 )
+format = 1
+tile_data = PoolIntArray( 327697, 0, 262155, 327698, 0, 262155, 327699, 0, 262155, 327700, 0, 262155, 327701, 0, 262155, 393228, 0, 131083, 393233, 0, 262155, 393234, 0, 262155, 393235, 0, 262155, 393236, 0, 262155, 393237, 0, 262155, 458764, 0, 131083, 458768, 0, 131083, 458773, 0, 196613, 524296, 0, 131083, 524297, 0, 131083, 524298, 0, 131083, 524299, 0, 131083, 524300, 0, 131083, 524301, 0, 131083, 524302, 0, 131083, 524303, 0, 131083, 524304, 0, 131083, 524309, 0, 196613, 589840, 0, 131083, 589841, 0, 131083, 589842, 0, 131083, 589845, 0, 196613, 655377, 0, 131083, 655381, 0, 196613, 720913, 0, 131083, 720917, 0, 196613, 786441, 0, 327680, 786444, 0, 327680, 786445, 0, 327680, 786453, 0, 196613, 851970, 0, 327680, 851971, 0, 327680, 851973, 0, 327680, 851974, 0, 327680, 851975, 0, 327680, 851977, 0, 327680, 851978, 0, 327680, 851979, 0, 327680, 851980, 0, 327680, 851981, 0, 327680, 851982, 0, 327680, 851983, 0, 327680, 851984, 0, 327680, 851986, 0, 327680, 851987, 0, 327680, 851989, 0, 196613, 917504, 0, 65538, 917505, 0, 65538, 917506, 0, 65538, 917507, 0, 65538, 917508, 0, 65538, 917509, 0, 65538, 917510, 0, 65538, 917511, 0, 65538, 917512, 0, 65538, 917513, 0, 65538, 917514, 0, 65538, 917515, 0, 65538, 917516, 0, 65538, 917517, 0, 65538, 917518, 0, 65538, 917519, 0, 65538, 917520, 0, 65538, 917521, 0, 65538, 917522, 0, 65538, 917523, 0, 65538, 917524, 0, 65538, 917525, 0, 65538, 917526, 0, 65538, 917527, 0, 65538, 917528, 0, 65538, 917529, 0, 65538, 917530, 0, 65538 )
+
+[node name="Key1" parent="." instance=ExtResource( 7 )]
+position = Vector2( 422, 242 )
+id = "key-1"
+
+[node name="Key2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 424, 225 )
+id = "key-2"
+
+[node name="Key3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 422, 207 )
+id = "key-3"
+
+[node name="Adeline" parent="." instance=ExtResource( 4 )]
+position = Vector2( 158, 130 )
+
+[node name="Lucille" parent="." instance=ExtResource( 5 )]
+position = Vector2( 214, 91 )
+
+[node name="Bastien" parent="." instance=ExtResource( 2 )]
+position = Vector2( 279, 111 )
+
+[node name="Exit" parent="." instance=ExtResource( 3 )]
+position = Vector2( 474, 243 )

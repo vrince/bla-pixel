@@ -6,7 +6,7 @@
 [ext_resource path="res://characters/adeline.tscn" type="PackedScene" id=4]
 [ext_resource path="res://characters/lucille.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/Background/backgroundColorDesert.png" type="Texture" id=6]
-[ext_resource path="res://levels/desert/level-0.gd" type="Script" id=7]
+[ext_resource path="res://levels/level-6.gd" type="Script" id=7]
 [ext_resource path="res://objects/button.tscn" type="PackedScene" id=8]
 [ext_resource path="res://objects/object-source.tscn" type="PackedScene" id=10]
 

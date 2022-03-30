@@ -5,6 +5,8 @@ var level : int = 0
 var start_scene_time : int = -1
 var level_time : int = 300
 var count_down : int = -1
+var diamond_count: int = 0
+var lives = {"bastien": 0, "lucille": 0, "adeline": 0}
 
 var levels := [
 	"levels/level-0.tscn",
@@ -13,9 +15,10 @@ var levels := [
 	"levels/level-3.tscn",
 	"levels/level-4.tscn",
 	"levels/level-5.tscn",
-	"levels/mountain/level-0.tscn",
-	"levels/mountain/level-1.tscn",
-	"levels/desert/level-0.tscn"
+	"levels/level-6.tscn",
+	"levels/level-7.tscn",
+	"levels/level-8.tscn",
+	"levels/level-10.tscn"
 ]
 
 signal player_selected(old_id, player_id)
@@ -27,6 +30,8 @@ signal player_exited(player_id)
 signal level_finished()
 signal start_new_level(level_name)
 signal count_down(level_name)
+signal diamond_count_changed(count)
+signal player_oupsed(player_id)
 
 func _ready():
 	select_player("bastien")
@@ -36,6 +41,14 @@ func select_player(player_id: String):
 	var old_id = selected_player
 	selected_player = player_id
 	emit_signal("player_selected", old_id, selected_player)
+
+func oups_player(player_id: String):
+	lives[player_id] += 1
+	emit_signal("player_oupsed", player_id)
+
+func increment_diamond():
+	diamond_count+=1
+	emit_signal("diamond_count_changed", diamond_count)
 
 func change_scene(scene: String):
 	start_scene_time = OS.get_unix_time()
