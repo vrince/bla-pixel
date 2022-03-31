@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://characters/bastien.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/Background/backgroundColorForest.png" type="Texture" id=6]
 [ext_resource path="res://objects/wind.tscn" type="PackedScene" id=7]
 [ext_resource path="res://hud.tscn" type="PackedScene" id=8]
+[ext_resource path="res://objects/diamond.tscn" type="PackedScene" id=9]
 
 [node name="Level5" type="Node2D"]
 
@@ -53,3 +54,33 @@ position = Vector2( 332, 200 )
 position = Vector2( 219, 225 )
 
 [node name="Hud" parent="." instance=ExtResource( 8 )]
+
+[node name="Diamond" parent="." instance=ExtResource( 9 )]
+position = Vector2( 98, 106 )
+
+[node name="Diamond2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 181, 35 )
+
+[node name="Diamond3" parent="." instance=ExtResource( 9 )]
+position = Vector2( 207, 35 )
+
+[node name="Diamond4" parent="." instance=ExtResource( 9 )]
+position = Vector2( 234, 34 )
+
+[node name="Diamond5" parent="." instance=ExtResource( 9 )]
+position = Vector2( 385, 166 )
+
+[node name="Diamond6" parent="." instance=ExtResource( 9 )]
+position = Vector2( 467, 57 )
+
+[node name="Diamond7" parent="." instance=ExtResource( 9 )]
+position = Vector2( 360, 56 )
+
+[node name="Diamond8" parent="." instance=ExtResource( 9 )]
+position = Vector2( 207, 180 )
+
+[node name="Diamond9" parent="." instance=ExtResource( 9 )]
+position = Vector2( 288, 87 )
+
+[node name="Diamond10" parent="." instance=ExtResource( 9 )]
+position = Vector2( 350, 227 )

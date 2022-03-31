@@ -127,12 +127,14 @@ func _integrate_forces(state: Physics2DDirectBodyState):
 	  
 func appear():
 	var tween = $Tween
-	tween.interpolate_property(self, "scale", Vector2(0,0), original_scale, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.interpolate_property(self, "scale", Vector2(0,0), original_scale, 0.5, 
+	Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 	tween.start()
 	
 func disappear():
 	var tween = $Tween
-	tween.interpolate_property(self, "scale", original_scale, Vector2(0,0), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.interpolate_property(self, "scale", original_scale, Vector2(0,0), 0.5,
+	Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 	tween.start()
 	yield(tween, "tween_completed")
 	queue_free()

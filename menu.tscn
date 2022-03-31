@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://menu.gd" type="Script" id=1]
 [ext_resource path="res://characters/bastien.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/Background/backgroundCastles.png" type="Texture" id=5]
 [ext_resource path="res://characters/adeline.tscn" type="PackedScene" id=6]
 [ext_resource path="res://theme.tres" type="Theme" id=7]
+[ext_resource path="res://objects/button.tscn" type="PackedScene" id=8]
 
 [sub_resource type="StyleBoxFlat" id=2]
 content_margin_left = 0.0
@@ -68,20 +69,36 @@ texture = ExtResource( 5 )
 [node name="ItemList" type="ItemList" parent="."]
 margin_left = 27.0
 margin_top = 51.0
-margin_right = 444.0
+margin_right = 207.0
 margin_bottom = 201.0
-custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
+custom_colors/font_color_selected = Color( 0.796078, 0.505882, 0.368627, 1 )
 custom_colors/font_color = Color( 0.223529, 0.254902, 0.270588, 1 )
 custom_styles/selected_focus = SubResource( 2 )
 custom_styles/selected = SubResource( 8 )
 custom_styles/bg = SubResource( 7 )
 items = [ "Item 0", null, false, "Item 1", null, false, "Item 2", null, false ]
 
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 5.0
+margin_top = 70.0
+margin_right = 225.0
+margin_bottom = 86.0
+custom_colors/font_color = Color( 0, 0, 0, 0.72549 )
+text = "Bastien | Lucille | Adeline"
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 18, 18 )
+format = 1
+tile_data = PoolIntArray( 1, 0, 458765, 2, 0, 458767, 65543, 0, 458765, 65544, 0, 458766, 65545, 0, 458766, 65546, 0, 458767, 65557, 0, 458765, 65558, 0, 458766, 65559, 0, 458767, 196618, 0, 458765, 196619, 0, 458767, 327687, 0, 458765, 327688, 0, 458767, 393230, 0, 458765, 393231, 0, 458766, 393232, 0, 458766, 393233, 0, 458767, 458775, 0, 458765, 458776, 0, 458766, 458777, 0, 458766, 458778, 0, 458766, 524306, 0, 458765, 524307, 0, 458766, 524308, 0, 458766, 524309, 0, 458767, 655358, 0, 458766, 655359, 0, 458766, 589824, 0, 458766, 589825, 0, 458767, 589832, 0, 458765, 589833, 0, 458766, 589834, 0, 458766, 589835, 0, 458766, 589836, 0, 458766, 589837, 0, 458767, 720911, 0, 458765, 720912, 0, 458767, 851971, 0, 393221, 851982, 0, 393225, 851990, 0, 458757, 917504, 0, 65538, 917505, 0, 65538, 917506, 0, 65538, 917507, 0, 65538, 917508, 0, 65538, 917509, 0, 65539, 917510, 0, 458758, 917511, 0, 458758, 917512, 0, 458758, 917513, 0, 458758, 917514, 0, 458758, 917515, 0, 196609, 917516, 0, 196610, 917517, 0, 196610, 917518, 0, 196610, 917519, 0, 196610, 917520, 0, 196611, 917521, 0, 458759, 917522, 0, 458759, 917523, 0, 458759, 917524, 0, 458759, 917525, 0, 327681, 917526, 0, 327682, 917527, 0, 327682, 917528, 0, 327682, 917529, 0, 327682, 917530, 0, 327682 )
+
 [node name="Button" type="Button" parent="."]
-margin_left = 411.0
-margin_top = 181.0
-margin_right = 457.0
-margin_bottom = 213.0
+margin_left = 345.0
+margin_top = 184.0
+margin_right = 391.0
+margin_bottom = 216.0
 custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.223529, 0.254902, 0.270588, 1 )
 custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
@@ -90,29 +107,23 @@ custom_styles/hover = SubResource( 5 )
 custom_styles/normal = SubResource( 4 )
 text = "Go !"
 
-[node name="Label" type="Label" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -110.0
-margin_top = 9.0
-margin_right = 110.0
-margin_bottom = 25.0
-custom_colors/font_color = Color( 0, 0, 0, 0.72549 )
-text = "Bastien | Lucille | Adeline"
-
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = ExtResource( 3 )
-cell_size = Vector2( 18, 18 )
-format = 1
-tile_data = PoolIntArray( 1, 0, 458765, 2, 0, 458767, 65557, 0, 458765, 65558, 0, 458766, 65559, 0, 458767, 196616, 0, 458765, 196617, 0, 458766, 196618, 0, 458766, 196619, 0, 458766, 196620, 0, 458766, 196621, 0, 458766, 196622, 0, 458766, 196623, 0, 458766, 196624, 0, 458766, 196625, 0, 458766, 196626, 0, 458767, 458775, 0, 458765, 458776, 0, 458766, 458777, 0, 458766, 458778, 0, 458766, 655358, 0, 458766, 655359, 0, 458766, 589824, 0, 458766, 589825, 0, 458767, 851971, 0, 393221, 851979, 0, 393224, 851982, 0, 393225, 851990, 0, 458757, 917504, 0, 65538, 917505, 0, 65538, 917506, 0, 65538, 917507, 0, 65538, 917508, 0, 65538, 917509, 0, 65539, 917510, 0, 458758, 917511, 0, 458758, 917512, 0, 458758, 917513, 0, 458758, 917514, 0, 458758, 917515, 0, 196609, 917516, 0, 196610, 917517, 0, 196610, 917518, 0, 196610, 917519, 0, 196610, 917520, 0, 196611, 917521, 0, 458759, 917522, 0, 458759, 917523, 0, 458759, 917524, 0, 458759, 917525, 0, 327681, 917526, 0, 327682, 917527, 0, 327682, 917528, 0, 327682, 917529, 0, 327682, 917530, 0, 327682 )
-
 [node name="Adeline" parent="." instance=ExtResource( 6 )]
-position = Vector2( 304, 43 )
+position = Vector2( 431, 52 )
 
 [node name="Lucille" parent="." instance=ExtResource( 4 )]
-position = Vector2( 245, 43 )
+position = Vector2( 355, 53 )
 
 [node name="Bastien" parent="." instance=ExtResource( 2 )]
-position = Vector2( 183, 44 )
+position = Vector2( 282, 44 )
+
+[node name="Button2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 191, 153 )
+id = "level"
+single_shot = false
+
+[node name="Button3" parent="." instance=ExtResource( 8 )]
+position = Vector2( 369, 243 )
+id = "go"
+single_shot = false
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
