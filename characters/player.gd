@@ -17,6 +17,7 @@ var particle : Particles2D
 var original_position : Vector2
 var original_scale : Vector2
 var reset := false
+var reset_timer = null
 
 func _ready():
 	Global.connect("player_selected", self, "_on_player_selected")
@@ -31,9 +32,13 @@ func _ready():
 	
 	original_position = get_global_position()
 	original_scale = get_parent().scale
-	print(original_scale)
-	#appear()
+
 	_on_player_selected("", Global.selected_player)
+	
+	reset_timer = Timer.new()
+	add_child(reset_timer)
+	reset_timer.set_one_shot(true)
+	reset_timer.connect("timeout", self, "_on_reset_timeout")
 
 func _input(e):
 	if Input.is_action_pressed(id):
@@ -64,7 +69,9 @@ func _on_start_new_level(level: String):
 func _on_VisibilityNotifier2D_viewport_exited(viewport):
 	reset = true
 	scale = Vector2(0,0)
-	Global.oups_player(id)
+
+func _on_reset_timeout():
+	Global.new_player(id)
 
 func _integrate_forces(state: Physics2DDirectBodyState):
 	if reset:
@@ -72,7 +79,9 @@ func _integrate_forces(state: Physics2DDirectBodyState):
 		linear_velocity = Vector2(0,0)
 		set_global_position(original_position)
 		reset = false
-
+		if reset_timer.is_stopped():
+			reset_timer.start(0.5)
+	
 	var jumping = state.linear_velocity.y < -10
 		
 	var is_on_ground = len($Area2DGround.get_overlapping_bodies()) > 1

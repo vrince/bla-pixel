@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://characters/bastien.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/Background/backgroundColorDesert.png" type="Texture" id=6]
 [ext_resource path="res://levels/level-6.gd" type="Script" id=7]
 [ext_resource path="res://objects/button.tscn" type="PackedScene" id=8]
+[ext_resource path="res://hud.tscn" type="PackedScene" id=9]
 [ext_resource path="res://objects/object-source.tscn" type="PackedScene" id=10]
 
 [node name="Level-0" type="Node2D"]
@@ -49,3 +50,5 @@ position = Vector2( 72, 241 )
 
 [node name="Exit" parent="." instance=ExtResource( 3 )]
 position = Vector2( 458, 243 )
+
+[node name="Hud" parent="." instance=ExtResource( 9 )]

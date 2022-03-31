@@ -18,6 +18,7 @@ var levels := [
 	"levels/level-6.tscn",
 	"levels/level-7.tscn",
 	"levels/level-8.tscn",
+	"levels/level-9.tscn",
 	"levels/level-10.tscn"
 ]
 
@@ -31,7 +32,7 @@ signal level_finished()
 signal start_new_level(level_name)
 signal count_down(level_name)
 signal diamond_count_changed(count)
-signal player_oupsed(player_id)
+signal new_player(player_id)
 
 func _ready():
 	select_player("bastien")
@@ -42,9 +43,9 @@ func select_player(player_id: String):
 	selected_player = player_id
 	emit_signal("player_selected", old_id, selected_player)
 
-func oups_player(player_id: String):
+func new_player(player_id: String):
 	lives[player_id] += 1
-	emit_signal("player_oupsed", player_id)
+	emit_signal("new_player", player_id)
 
 func increment_diamond():
 	diamond_count+=1
