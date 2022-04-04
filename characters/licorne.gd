@@ -10,6 +10,8 @@ var direction = 1.0
 var jumped = false
 var size = 3
 
+signal catched()
+
 func _ready():
 	$Medium.visible = false
 	$MediumColision.visible = false
@@ -55,4 +57,8 @@ func _on_Area2D_body_entered(body):
 				$MediumColision.queue_free()
 				$Small.visible = true
 				size = 1
+			elif size == 1:
+				Global.emit_signal("item_picked", "licorne", player.id, $Small.frames.get_frame('default', 0))
+				emit_signal("catched")
+				queue_free()
 			

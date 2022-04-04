@@ -48,10 +48,10 @@ func _on_player_selected(old_id: String, new_id: String):
 	selected = (new_id == id)
 	$Particles2D.emitting = selected
 
-func _on_item_picked(object: Node2D, player_id: String):
+func _on_item_picked(new_item: String, player_id: String, texture: Texture):
 	if item.empty() and player_id == id:
-		item = object.id
-		$ItemSprite.texture = object.texture
+		item = new_item
+		$ItemSprite.texture = texture
 		$ItemSprite.visible = true
 
 func _on_item_consumed(object: Node2D, player_id: String):

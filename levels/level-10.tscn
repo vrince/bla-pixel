@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://characters/bastien.tscn" type="PackedScene" id=2]
@@ -8,8 +8,12 @@
 [ext_resource path="res://assets/Background/backgroundForest.png" type="Texture" id=6]
 [ext_resource path="res://characters/licorne.tscn" type="PackedScene" id=7]
 [ext_resource path="res://hud.tscn" type="PackedScene" id=8]
+[ext_resource path="res://objects/wind.tscn" type="PackedScene" id=9]
+[ext_resource path="res://levels/level-10.gd" type="Script" id=10]
+[ext_resource path="res://objects/diamond.tscn" type="PackedScene" id=11]
 
-[node name="LevelTemplate" type="Node2D"]
+[node name="Level-10" type="Node2D"]
+script = ExtResource( 10 )
 
 [node name="BackGround" type="Sprite" parent="."]
 position = Vector2( 284, 152 )
@@ -17,12 +21,13 @@ scale = Vector2( 0.6875, 0.541504 )
 texture = ExtResource( 6 )
 
 [node name="TileMap" type="TileMap" parent="."]
+position = Vector2( 0, -1 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 18, 18 )
 collision_layer = 4
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( 65542, 0, 458759, 131087, 0, 458759, 131088, 0, 458759, 131089, 0, 458759, 131097, 0, 458759, 131098, 0, 458759, 196608, 0, 458759, 196609, 0, 458759, 196610, 0, 458759, 262164, 0, 458759, 262165, 0, 458759, 327691, 0, 458759, 327692, 0, 458759, 393220, 0, 458759, 393221, 0, 458759, 524302, 0, 458759, 524303, 0, 458759, 524304, 0, 458759, 524314, 0, 458759, 589831, 0, 458759, 589832, 0, 458759, 589833, 0, 458759, 655380, 0, 458759, 655381, 0, 458759, 655382, 0, 458759, 720908, 0, 458759, 786435, 0, 458759, 786436, 0, 458759, 786437, 0, 458759, 917504, 0, 65538, 917505, 0, 65538, 917506, 0, 65538, 917507, 0, 65538, 917508, 0, 65538, 917509, 0, 65538, 917510, 0, 65538, 917511, 0, 65538, 917512, 0, 65538, 917513, 0, 65538, 917514, 0, 65538, 917515, 0, 65538, 917516, 0, 65538, 917517, 0, 65538, 917518, 0, 65538, 917519, 0, 65538, 917520, 0, 65538, 917521, 0, 65538, 917522, 0, 65538, 917523, 0, 65538, 917524, 0, 65538, 917525, 0, 65538, 917526, 0, 65538, 917527, 0, 65538, 917528, 0, 65538, 917529, 0, 65538, 917530, 0, 65538 )
+tile_data = PoolIntArray( 65558, 0, 458765, 65559, 0, 458766, 65560, 0, 458766, 65561, 0, 458767, 196614, 0, 458765, 196615, 0, 458766, 196616, 0, 458766, 196617, 0, 458766, 196618, 0, 458766, 196619, 0, 458767, 262161, 0, 458765, 262162, 0, 458766, 262163, 0, 458766, 262164, 0, 458767, 393216, 0, 458766, 393217, 0, 458766, 393218, 0, 458766, 393219, 0, 458766, 393220, 0, 458767, 524303, 0, 458759, 524304, 0, 458759, 524313, 0, 458765, 524314, 0, 458766, 589832, 0, 458759, 589833, 0, 458759, 655380, 0, 458759, 655381, 0, 458759, 720908, 0, 458759, 720909, 0, 458759, 786435, 0, 458759, 786436, 0, 458759, 917504, 0, 65538, 917505, 0, 65538, 917506, 0, 65538, 917507, 0, 65538, 917508, 0, 65538, 917509, 0, 65538, 917510, 0, 65538, 917511, 0, 65538, 917512, 0, 65538, 917513, 0, 65538, 917514, 0, 65538, 917515, 0, 65538, 917516, 0, 65538, 917517, 0, 65538, 917518, 0, 65538, 917519, 0, 65538, 917520, 0, 65538, 917521, 0, 65538, 917522, 0, 65538, 917523, 0, 65538, 917524, 0, 65538, 917525, 0, 65538, 917526, 0, 65538, 917527, 0, 65538, 917528, 0, 65538, 917529, 0, 65538, 917530, 0, 65538 )
 
 [node name="Licorne" parent="." instance=ExtResource( 7 )]
 position = Vector2( -12, 36 )
@@ -41,3 +46,75 @@ visible = false
 position = Vector2( 459, 242 )
 
 [node name="Hud" parent="." instance=ExtResource( 8 )]
+
+[node name="Wind" parent="." instance=ExtResource( 9 )]
+position = Vector2( 115, 252 )
+
+[node name="Wind2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 234, 199 )
+
+[node name="Wind3" parent="." instance=ExtResource( 9 )]
+position = Vector2( 423, 252 )
+
+[node name="Diamonds" type="Node2D" parent="."]
+visible = false
+
+[node name="Exit2" parent="Diamonds" instance=ExtResource( 3 )]
+position = Vector2( 45, 99 )
+
+[node name="Diamond" parent="Diamonds" instance=ExtResource( 11 )]
+position = Vector2( 72, 201 )
+
+[node name="Diamond2" parent="Diamonds" instance=ExtResource( 11 )]
+position = Vector2( 152, 239 )
+
+[node name="Diamond3" parent="Diamonds" instance=ExtResource( 11 )]
+position = Vector2( 172, 239 )
+
+[node name="Diamond4" parent="Diamonds" instance=ExtResource( 11 )]
+position = Vector2( 192, 239 )
+
+[node name="Diamond5" parent="Diamonds" instance=ExtResource( 11 )]
+position = Vector2( 212, 239 )
+
+[node name="Diamond6" parent="Diamonds" instance=ExtResource( 11 )]
+position = Vector2( 232, 239 )
+
+[node name="Diamond7" parent="Diamonds" instance=ExtResource( 11 )]
+position = Vector2( 251, 239 )
+
+[node name="Diamond8" parent="Diamonds" instance=ExtResource( 11 )]
+position = Vector2( 271, 239 )
+
+[node name="Diamond9" parent="Diamonds" instance=ExtResource( 11 )]
+position = Vector2( 291, 239 )
+
+[node name="Diamond10" parent="Diamonds" instance=ExtResource( 11 )]
+position = Vector2( 311, 239 )
+
+[node name="Diamond11" parent="Diamonds" instance=ExtResource( 11 )]
+position = Vector2( 331, 239 )
+
+[node name="Diamond12" parent="Diamonds" instance=ExtResource( 11 )]
+position = Vector2( 123, 43 )
+
+[node name="Diamond13" parent="Diamonds" instance=ExtResource( 11 )]
+position = Vector2( 143, 43 )
+
+[node name="Diamond14" parent="Diamonds" instance=ExtResource( 11 )]
+position = Vector2( 163, 43 )
+
+[node name="Diamond15" parent="Diamonds" instance=ExtResource( 11 )]
+position = Vector2( 183, 43 )
+
+[node name="Diamond16" parent="Diamonds" instance=ExtResource( 11 )]
+position = Vector2( 203, 43 )
+
+[node name="Diamond17" parent="Diamonds" instance=ExtResource( 11 )]
+position = Vector2( 320, 60 )
+
+[node name="Diamond18" parent="Diamonds" instance=ExtResource( 11 )]
+position = Vector2( 340, 60 )
+
+[node name="Diamond19" parent="Diamonds" instance=ExtResource( 11 )]
+position = Vector2( 360, 60 )

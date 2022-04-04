@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://characters/bastien.tscn" type="PackedScene" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://assets/Background/backgroundCastles.png" type="Texture" id=6]
 [ext_resource path="res://levels/level-4.gd" type="Script" id=7]
 [ext_resource path="res://objects/diamond.tscn" type="PackedScene" id=8]
-[ext_resource path="res://assets/light.png" type="Texture" id=9]
 [ext_resource path="res://hud.tscn" type="PackedScene" id=10]
 
 [node name="Level4" type="Node2D"]
@@ -76,13 +75,5 @@ energy = 3.0
 [node name="Diamond9" parent="." instance=ExtResource( 8 )]
 position = Vector2( 332, 206 )
 energy = 3.0
-
-[node name="Light2D" type="Light2D" parent="."]
-position = Vector2( 70, 338 )
-texture = ExtResource( 9 )
-texture_scale = 0.25
-energy = 2.0
-shadow_enabled = true
-shadow_gradient_length = 0.5
 
 [node name="Hud" parent="." instance=ExtResource( 10 )]

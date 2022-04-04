@@ -11,4 +11,5 @@ func _on_Area2D_body_entered(body):
 		if player:
 			if player.item == id:
 				Global.emit_signal("item_consumed", self, player.id)
+				queue_free()
 

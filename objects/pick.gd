@@ -14,5 +14,5 @@ func _on_Area2D_body_entered(body):
 	if visible && get_parent().visible:
 		var player = body as Player
 		if player and player.item.empty():
-			Global.emit_signal("item_picked", self, player.id)
+			Global.emit_signal("item_picked", id, player.id, texture)
 			queue_free()

@@ -25,7 +25,7 @@ var levels := [
 signal player_selected(old_id, player_id)
 signal button_pressed(button_id, player_id)
 signal button_released(button_id, player_id)
-signal item_picked(item, player_id)
+signal item_picked(item, player_id, texture)
 signal item_consumed(item, player_id)
 signal player_exited(player_id)
 signal level_finished()
