@@ -6,8 +6,9 @@ func _ready():
 	list.clear()
 	list.set_focus_mode(0)
 	for level in Global.levels:
-		var text = level.replace("levels/", "").replace("/", " ").replace(".tscn", "").replace("-", " ")
-		list.add_item(text)
+		if not "end" in level:
+			var text = level.replace("levels/", "").replace("/", " ").replace(".tscn", "").replace("-", " ")
+			list.add_item(text)
 	Global.connect("button_pressed", self, "_on_button")
 
 func _on_button(button_id, player_id):

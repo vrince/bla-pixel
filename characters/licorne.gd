@@ -13,10 +13,18 @@ var size = 3
 signal catched()
 
 func _ready():
-	$Medium.visible = false
-	$MediumColision.visible = false
-	$Small.visible = false
+	set_size(size)
 
+func set_size(var s: int):
+	size = s
+	if $Big:
+		$Big.visible = s == 3
+		$BigColision.visible = s == 3
+	if $Medium:
+		$Medium.visible = s == 2
+		$MediumColision.visible = s == 2
+	$Small.visible = s == 1
+	
 func _physics_process(delta):
 	tick += delta
 	var velocity = direction * Vector2(speed, h * sin(t*tick))
@@ -46,17 +54,15 @@ func _on_Area2D_body_entered(body):
 	if player:
 		$Particles2D2.emitting = true
 		if not jumped:
+			jumped = true
 			if size == 3:
 				$Big.queue_free()
-				$BigCollision.queue_free()
-				$Medium.visible = true
-				$MediumColision.visible = true
-				size = 2
+				$BigColision.queue_free()
+				set_size(2)
 			elif size == 2:
 				$Medium.queue_free()
 				$MediumColision.queue_free()
-				$Small.visible = true
-				size = 1
+				set_size(1)
 			elif size == 1:
 				Global.emit_signal("item_picked", "licorne", player.id, $Small.frames.get_frame('default', 0))
 				emit_signal("catched")

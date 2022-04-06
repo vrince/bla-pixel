@@ -1,0 +1,142 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://assets/book-8.png" type="Texture" id=1]
+[ext_resource path="res://assets/book-2.png" type="Texture" id=2]
+[ext_resource path="res://assets/book-1.png" type="Texture" id=3]
+[ext_resource path="res://assets/book-6.png" type="Texture" id=4]
+[ext_resource path="res://assets/book-10.png" type="Texture" id=5]
+[ext_resource path="res://assets/book-3.png" type="Texture" id=6]
+[ext_resource path="res://assets/book-0.png" type="Texture" id=7]
+[ext_resource path="res://assets/book-4.png" type="Texture" id=8]
+[ext_resource path="res://assets/book-5.png" type="Texture" id=9]
+[ext_resource path="res://assets/book-7.png" type="Texture" id=10]
+[ext_resource path="res://assets/book-9.png" type="Texture" id=11]
+[ext_resource path="res://tileset.tres" type="TileSet" id=12]
+[ext_resource path="res://assets/Background/backgroundCastles.png" type="Texture" id=13]
+[ext_resource path="res://end.gd" type="Script" id=14]
+[ext_resource path="res://characters/lucille.tscn" type="PackedScene" id=15]
+[ext_resource path="res://characters/adeline.tscn" type="PackedScene" id=16]
+[ext_resource path="res://characters/bastien.tscn" type="PackedScene" id=17]
+[ext_resource path="res://assets/Tiles/diamond.png" type="Texture" id=18]
+[ext_resource path="res://assets/Characters/unicorn-small1.png" type="Texture" id=19]
+[ext_resource path="res://assets/Characters/poop.png" type="Texture" id=20]
+[ext_resource path="res://characters/licorne.tscn" type="PackedScene" id=21]
+[ext_resource path="res://hud.tscn" type="PackedScene" id=22]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 4 ), ExtResource( 10 ), ExtResource( 1 ), ExtResource( 11 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 35, 11.5 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.245803, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+emission_shape = 1
+emission_sphere_radius = 10.0
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 25.0
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = -100.0
+angular_velocity = 25.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 4 )
+hue_variation_random = 1.0
+
+[sub_resource type="Curve" id=6]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.133094, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
+
+[sub_resource type="ParticlesMaterial" id=8]
+trail_divisor = 2
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 33.0
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = -150.0
+initial_velocity_random = 0.5
+angular_velocity = 50.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 7 )
+
+[node name="End" type="Node2D"]
+script = ExtResource( 14 )
+
+[node name="BackgroundCastles" type="Sprite" parent="."]
+position = Vector2( 284, 125 )
+scale = Vector2( 0.635254, 0.635254 )
+texture = ExtResource( 13 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 380, 167 )
+scale = Vector2( 0.25, 0.25 )
+frames = SubResource( 1 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 12 )
+cell_size = Vector2( 18, 18 )
+format = 1
+tile_data = PoolIntArray( 3, 0, 131086, 7, 0, 262153, 22, 0, 262153, 65539, 0, 131086, 65543, 0, 327689, 65558, 0, 262153, 131075, 0, 131086, 131078, 0, 458765, 131079, 0, 458766, 131080, 0, 458767, 131084, 0, 17, 131085, 0, 18, 131086, 0, 18, 131087, 0, 18, 131088, 0, 19, 131093, 0, 458756, 131094, 0, 327689, 196611, 0, 131086, 196620, 0, 131089, 196621, 0, 131090, 196622, 0, 262161, 196623, 0, 131090, 196624, 0, 131091, 196628, 0, 458765, 196629, 0, 458766, 196630, 0, 458766, 196631, 0, 458767, 262147, 0, 131086, 262158, 0, 327696, 262168, 0, 17, 262169, 0, 18, 262170, 0, 19, 327683, 0, 131086, 327689, 0, 17, 327690, 0, 18, 327691, 0, 18, 327692, 0, 18, 327693, 0, 19, 327694, 0, 327696, 327704, 0, 131089, 327705, 0, 262161, 327706, 0, 131091, 393219, 0, 131086, 393225, 0, 131089, 393226, 0, 131090, 393227, 0, 262161, 393228, 0, 131090, 393229, 0, 131091, 393230, 0, 327696, 393241, 0, 327696, 458755, 0, 131086, 458763, 0, 327696, 458766, 0, 327696, 458777, 0, 262160, 524291, 0, 131086, 524299, 0, 327696, 524302, 0, 262160, 524313, 0, 327696, 589827, 0, 131086, 589833, 0, 262162, 589834, 0, 327699, 589835, 0, 393232, 589838, 0, 327696, 589849, 0, 327696, 655363, 0, 131086, 655371, 0, 327696, 655374, 0, 327696, 655385, 0, 327696, 720899, 0, 131086, 720907, 0, 262160, 720908, 0, 458758, 720909, 0, 458758, 720910, 0, 393234, 720911, 0, 393235, 720920, 0, 327698, 720921, 0, 327697, 720922, 0, 262163, 786435, 0, 131086, 786443, 0, 327696, 786446, 0, 327696, 786457, 0, 327696, 851968, 0, 393221, 851970, 0, 327685, 851971, 0, 196623, 851972, 0, 327685, 851974, 0, 262149, 851979, 0, 393233, 851980, 0, 393221, 851982, 0, 393233, 851984, 0, 458757, 851993, 0, 393233, 917504, 0, 196610, 917505, 0, 196610, 917506, 0, 196610, 917507, 0, 196610, 917508, 0, 196610, 917509, 0, 196610, 917510, 0, 196610, 917511, 0, 196610, 917512, 0, 196610, 917513, 0, 196610, 917514, 0, 196610, 917515, 0, 196610, 917516, 0, 196610, 917517, 0, 196610, 917518, 0, 196610, 917519, 0, 196610, 917520, 0, 196610, 917521, 0, 196610, 917522, 0, 196610, 917523, 0, 196610, 917524, 0, 196610, 917525, 0, 196610, 917526, 0, 196610, 917527, 0, 196610, 917528, 0, 196610, 917529, 0, 196610, 917530, 0, 196610 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 381, 198.5 )
+shape = SubResource( 2 )
+
+[node name="Bastien" parent="." instance=ExtResource( 17 )]
+position = Vector2( 32, 40 )
+
+[node name="Lucille" parent="." instance=ExtResource( 15 )]
+position = Vector2( 69, 55 )
+
+[node name="Adeline" parent="." instance=ExtResource( 16 )]
+position = Vector2( 104, 69 )
+
+[node name="Unicorn" type="Sprite" parent="."]
+visible = false
+modulate = Color( 0.992157, 0.866667, 0.639216, 1 )
+self_modulate = Color( 1, 0.976471, 0.905882, 1 )
+position = Vector2( 362, 166 )
+texture = ExtResource( 19 )
+
+[node name="PoopParticles2D" type="Particles2D" parent="."]
+position = Vector2( 363, 166 )
+emitting = false
+amount = 12
+lifetime = 3.0
+randomness = 0.5
+process_material = SubResource( 5 )
+texture = ExtResource( 20 )
+
+[node name="DiamondParticles2D" type="Particles2D" parent="."]
+position = Vector2( 363, 166 )
+emitting = false
+amount = 24
+lifetime = 5.0
+randomness = 0.5
+process_material = SubResource( 8 )
+texture = ExtResource( 18 )
+
+[node name="Licorne" parent="." instance=ExtResource( 21 )]
+position = Vector2( 237, 173 )
+
+[node name="Hud" parent="." instance=ExtResource( 22 )]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

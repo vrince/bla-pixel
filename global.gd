@@ -19,7 +19,8 @@ var levels := [
 	"levels/level-7.tscn",
 	"levels/level-8.tscn",
 	"levels/level-9.tscn",
-	"levels/level-10.tscn"
+	"levels/level-10.tscn",
+	"end.tscn"
 ]
 
 signal player_selected(old_id, player_id)
@@ -48,7 +49,7 @@ func new_player(player_id: String):
 	emit_signal("new_player", player_id)
 
 func increment_diamond():
-	diamond_count+=1
+	diamond_count += 1
 	emit_signal("diamond_count_changed", diamond_count)
 
 func change_scene(scene: String):
@@ -64,7 +65,6 @@ func _input(event):
 
 func _on_level_finished():
 	level += 1
-	print(level)
 	if level < len(levels):
 		var next_level = levels[level]
 		change_scene(next_level)
