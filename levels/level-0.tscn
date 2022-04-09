@@ -13,7 +13,8 @@
 [node name="Level-0" type="Node2D"]
 
 [node name="BackgroundColorDesert" type="Sprite" parent="."]
-position = Vector2( 207, 93 )
+position = Vector2( 254, 181 )
+scale = Vector2( 0.505859, 0.505859 )
 texture = ExtResource( 7 )
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -24,32 +25,36 @@ format = 1
 tile_data = PoolIntArray( 458757, 0, 14, 458758, 0, 12, 458759, 0, 15, 524294, 0, 131084, 589830, 0, 131084, 589832, 0, 14, 589833, 0, 12, 589834, 0, 15, 655366, 0, 131084, 655369, 0, 131084, 720899, 0, 14, 720900, 0, 12, 720901, 0, 15, 720902, 0, 131084, 720905, 0, 131084, 786436, 0, 65548, 786438, 0, 131084, 786441, 0, 131084, 851972, 0, 196620, 851974, 0, 196620, 851977, 0, 196620, 917504, 0, 65538, 917505, 0, 65538, 917506, 0, 65538, 917507, 0, 65538, 917508, 0, 65538, 917509, 0, 65538, 917510, 0, 65538, 917511, 0, 65538, 917512, 0, 65538, 917513, 0, 65538, 917514, 0, 65538, 917515, 0, 65538, 917516, 0, 65538, 917517, 0, 65538, 917518, 0, 65538, 917519, 0, 65538, 917520, 0, 65538, 917521, 0, 65538, 917522, 0, 65538, 917523, 0, 65538, 917524, 0, 65538, 917525, 0, 65538, 917526, 0, 65538, 917527, 0, 65538, 917528, 0, 65538, 917529, 0, 65538, 917530, 0, 65538, 917531, 0, 65538 )
 
 [node name="Adeline" parent="." instance=ExtResource( 4 )]
-position = Vector2( 81, 158 )
+position = Vector2( 82, 186 )
 
 [node name="Lucille" parent="." instance=ExtResource( 5 )]
-position = Vector2( 116, 96 )
+position = Vector2( 119, 111 )
 
 [node name="Bastien" parent="." instance=ExtResource( 2 )]
-position = Vector2( 181, 126 )
+position = Vector2( 165, 147 )
 
 [node name="Exit" parent="." instance=ExtResource( 3 )]
 position = Vector2( 277, 9 )
 rotation = 3.14159
 
 [node name="Wind" parent="." instance=ExtResource( 6 )]
-position = Vector2( 210, 251 )
+position = Vector2( 209, 252 )
+rotation = 0.615777
+scale = Vector2( 1, 1.80831 )
 
 [node name="Wind2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 228, 157 )
 
 [node name="Wind3" parent="." instance=ExtResource( 6 )]
 position = Vector2( 228, 250 )
+rotation = 0.865176
 
 [node name="Wind4" parent="." instance=ExtResource( 6 )]
 position = Vector2( 209, 62 )
 
 [node name="Wind5" parent="." instance=ExtResource( 6 )]
 position = Vector2( 209, 157 )
+rotation = -0.449499
 
 [node name="Wind6" parent="." instance=ExtResource( 6 )]
 position = Vector2( 228, 61 )
