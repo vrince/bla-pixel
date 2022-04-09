@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://menu.gd" type="Script" id=1]
 [ext_resource path="res://characters/bastien.tscn" type="PackedScene" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://characters/adeline.tscn" type="PackedScene" id=6]
 [ext_resource path="res://theme.tres" type="Theme" id=7]
 [ext_resource path="res://objects/button.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/Tiles/tile_0173.png" type="Texture" id=9]
+[ext_resource path="res://assets/Tiles/tile_0171.png" type="Texture" id=10]
+[ext_resource path="res://assets/Tiles/tile_0172.png" type="Texture" id=11]
 
 [sub_resource type="StyleBoxFlat" id=2]
 content_margin_left = 0.0
@@ -39,21 +42,8 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id=5]
-bg_color = Color( 0.443137, 0.666667, 0.203922, 1 )
-border_color = Color( 0.443137, 0.666667, 0.203922, 1 )
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.796078, 0.505882, 0.368627, 1 )
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-shadow_size = 4
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -96,15 +86,14 @@ tile_data = PoolIntArray( 1, 0, 458765, 2, 0, 458767, 65543, 0, 458765, 65544, 0
 
 [node name="Button" type="Button" parent="."]
 margin_left = 345.0
-margin_top = 184.0
+margin_top = 201.0
 margin_right = 391.0
-margin_bottom = 216.0
+margin_bottom = 233.0
 custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.223529, 0.254902, 0.270588, 1 )
 custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
-custom_styles/hover = SubResource( 5 )
-custom_styles/normal = SubResource( 4 )
+custom_styles/normal = SubResource( 9 )
 text = "Go !"
 
 [node name="Adeline" parent="." instance=ExtResource( 6 )]
@@ -125,5 +114,17 @@ single_shot = false
 position = Vector2( 369, 243 )
 id = "go"
 single_shot = false
+
+[node name="Tile0171" type="Sprite" parent="."]
+position = Vector2( 277, 121 )
+texture = ExtResource( 10 )
+
+[node name="Tile0172" type="Sprite" parent="."]
+position = Vector2( 369, 157 )
+texture = ExtResource( 11 )
+
+[node name="Tile0173" type="Sprite" parent="."]
+position = Vector2( 443, 138 )
+texture = ExtResource( 9 )
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

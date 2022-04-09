@@ -44,4 +44,5 @@ shape = SubResource( 1 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
 amount = 50
+visibility_rect = Rect2( 0, 0, 10, 10 )
 process_material = SubResource( 2 )
