@@ -6,7 +6,7 @@ export var id: String = "none"
 export var selected: bool = true
 export var item: String = ""
 export var stomp_impulse: = 600.0
-export var jump_impulse: = 400.0
+export var jump_impulse: = 60.0
 export var speed: = 200.0
 export var ground_speed_delta: = 50.0
 export var air_speed_delta: = 10.0
@@ -84,24 +84,16 @@ func _integrate_forces(state: Physics2DDirectBodyState):
 	
 	var jumping = state.linear_velocity.y < -10
 		
-	var is_on_ground = len($Area2DGround.get_overlapping_bodies()) > 1
-
-	var touch_right = false
-	for body in $Area2DRight.get_overlapping_bodies():
-		if body is TileMap:
-			touch_right = true
-
-	var touch_left = false
-	for body in $Area2DLeft.get_overlapping_bodies():
-		if body is TileMap:
-			touch_left = true
-
+	var is_on_ground = len($Area2DGround.get_overlapping_bodies()) > 0
+	var touch_right = len($Area2DRight.get_overlapping_bodies()) > 0
+	var touch_left = len($Area2DLeft.get_overlapping_bodies()) > 0
+	
 	var jump = (selected and Input.is_action_pressed("jump")) or Input.is_action_pressed(id + "_jump")
 	var right = (selected and Input.get_action_strength("ui_right")) or Input.is_action_pressed(id + "_right")
 	var left = (selected and Input.get_action_strength("ui_left")) or Input.is_action_pressed(id + "_left")
 	
 	if is_on_ground:
-		if not jumping and jump:
+		if jump:
 			apply_central_impulse(Vector2.UP * jump_impulse)
 		if right:
 			state.linear_velocity.x += ground_speed_delta
@@ -112,6 +104,7 @@ func _integrate_forces(state: Physics2DDirectBodyState):
 			state.linear_velocity.x += air_speed_delta
 		if not touch_left and left:
 			state.linear_velocity.x -= air_speed_delta
+			
 	state.linear_velocity.x = clamp(state.linear_velocity.x, -speed, speed)
 	
 	if state.linear_velocity.x > 10:

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://characters/bastien.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/exit.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/Background/backgroundEmpty.png" type="Texture" id=6]
+
+[node name="level-test" type="Node2D"]
+
+[node name="BackGround" type="Sprite" parent="."]
+position = Vector2( 256, 140 )
+scale = Vector2( 0.6875, 0.541504 )
+texture = ExtResource( 6 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 18, 18 )
+collision_layer = 4
+format = 1
+tile_data = PoolIntArray( 262165, 0, 0, 327701, 0, 0, 393237, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458773, 0, 0, 524288, 0, 0, 524309, 0, 0, 589824, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589845, 0, 0, 655360, 0, 0, 655381, 0, 0, 720896, 0, 0, 720905, 0, 0, 720906, 0, 0, 720907, 0, 0, 720917, 0, 0, 786432, 0, 0, 786453, 0, 0, 851968, 0, 0, 851989, 0, 0, 917504, 0, 65538, 917505, 0, 65538, 917506, 0, 65538, 917507, 0, 65538, 917508, 0, 65538, 917509, 0, 65538, 917510, 0, 65538, 917511, 0, 65538, 917512, 0, 65538, 917513, 0, 65538, 917514, 0, 65538, 917515, 0, 65538, 917516, 0, 65538, 917517, 0, 65538, 917518, 0, 65538, 917519, 0, 65538, 917520, 0, 65538, 917521, 0, 65538, 917522, 0, 65538, 917523, 0, 65538, 917524, 0, 65538, 917525, 0, 65538, 917526, 0, 65538, 917527, 0, 65538, 917528, 0, 65538, 917529, 0, 65538, 917530, 0, 65538 )
+
+[node name="Bastien" parent="." instance=ExtResource( 2 )]
+position = Vector2( 279, 111 )
+
+[node name="Exit" parent="." instance=ExtResource( 3 )]
+position = Vector2( 459, 242 )
