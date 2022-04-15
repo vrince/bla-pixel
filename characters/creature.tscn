@@ -1,0 +1,42 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://characters/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/creature-0.png" type="Texture" id=2]
+[ext_resource path="res://assets/creature-3.png" type="Texture" id=3]
+[ext_resource path="res://assets/creature-1.png" type="Texture" id=4]
+[ext_resource path="res://assets/creature-2.png" type="Texture" id=5]
+[ext_resource path="res://characters/creature.gd" type="Script" id=6]
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 14.0
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
+} ]
+
+[sub_resource type="ParticlesMaterial" id=2]
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
+[node name="Creature" type="Area2D"]
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 2 )
+shape = SubResource( 3 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+id = "bastien"
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
+frames = SubResource( 1 )
+
+[node name="Particles2D2" type="Particles2D" parent="Player"]
+emitting = false
+process_material = SubResource( 2 )

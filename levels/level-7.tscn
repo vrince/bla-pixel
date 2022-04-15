@@ -63,14 +63,14 @@ position = Vector2( 469, 94 )
 [node name="Diamond4" parent="." instance=ExtResource( 11 )]
 position = Vector2( 470, 238 )
 
-[node name="Diamond2" parent="Diamond4" instance=ExtResource( 11 )]
-position = Vector2( -407, -62 )
-
-[node name="Diamond2" parent="Diamond4/Diamond2" instance=ExtResource( 11 )]
-position = Vector2( 253, -83 )
-
 [node name="Diamond5" parent="." instance=ExtResource( 11 )]
 position = Vector2( 181, 217 )
 
 [node name="Diamond6" parent="." instance=ExtResource( 11 )]
 position = Vector2( 322, 218 )
+
+[node name="Diamond7" parent="." instance=ExtResource( 11 )]
+position = Vector2( 316, 93 )
+
+[node name="Diamond8" parent="." instance=ExtResource( 11 )]
+position = Vector2( 63, 176 )

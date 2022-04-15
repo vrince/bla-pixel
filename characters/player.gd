@@ -5,7 +5,7 @@ class_name Player
 export var id: String = "none"
 export var selected: bool = true
 export var item: String = ""
-export var stomp_impulse: = 600.0
+export var stomp_impulse: = 70.0
 export var jump_impulse: = 60.0
 export var speed: = 200.0
 export var ground_speed_delta: = 50.0
@@ -82,9 +82,8 @@ func _integrate_forces(state: Physics2DDirectBodyState):
 		if reset_timer.is_stopped():
 			reset_timer.start(0.5)
 	
-	var jumping = state.linear_velocity.y < -10
-		
 	var is_on_ground = len($Area2DGround.get_overlapping_bodies()) > 0
+	var is_on_player = len($Area2DPlayer.get_overlapping_bodies()) > 1 #current player overlap always
 	var touch_right = len($Area2DRight.get_overlapping_bodies()) > 0
 	var touch_left = len($Area2DLeft.get_overlapping_bodies()) > 0
 	
@@ -99,6 +98,8 @@ func _integrate_forces(state: Physics2DDirectBodyState):
 			state.linear_velocity.x += ground_speed_delta
 		if left:
 			state.linear_velocity.x -= ground_speed_delta
+	elif is_on_player and jump:
+		apply_central_impulse(Vector2.UP * stomp_impulse)
 	else:
 		if not touch_right and right:
 			state.linear_velocity.x += air_speed_delta

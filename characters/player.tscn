@@ -51,7 +51,7 @@ speed = 100.0
 ground_speed_delta = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 2 )
+position = Vector2( 0, 3 )
 shape = SubResource( 10 )
 
 [node name="ItemSprite" type="Sprite" parent="."]
@@ -69,6 +69,13 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DGround"]
+position = Vector2( 0, 8 )
+shape = SubResource( 18 )
+
+[node name="Area2DPlayer" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DPlayer"]
 position = Vector2( 0, 8 )
 shape = SubResource( 18 )
 
