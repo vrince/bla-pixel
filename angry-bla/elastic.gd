@@ -1,24 +1,41 @@
 extends Line2D
 
-var on_slingshot = true
+export var stiffness := 1.0
+var on_slingshot = false
+var shoot = false
 var impulse_direction = Vector2.ZERO
 var player = null
 
+const CREATURE = preload("res://characters/creature.tscn")
+
 func _ready():
+	reload()
 	pass
+
+func reload():
+	player = CREATURE.instance()
+	add_child(player)
+	player.connect("released", self, "_on_player_released")
+	on_slingshot = true
+	shoot = false
+
+func _input(event):
+	if event.is_action_pressed("ui_accept"):
+		if not on_slingshot:
+			reload()
 
 func _process(delta):
 	if on_slingshot:
-		var player_relative_position = player.position - position
-		points[1] = player_relative_position
-		if(impulse_direction.length() > 0):
-			player.get_node("Player").apply_central_impulse(1000 * impulse_direction)
+		points[1] = player.position
+		if shoot:
+			player.apply_central_impulse(stiffness * impulse_direction * player.position.length())
 			#player.get_node("Player").apply_torque_impulse(25 * delta)
 			on_slingshot = false
+			shoot = false
 			points[1] = Vector2.ZERO
 
 
 func _on_player_released():
-	print("_on_player_released")
-	impulse_direction = (position - player.position).normalized()
-	print(impulse_direction)
+	if on_slingshot and not shoot:
+		impulse_direction = - player.position.normalized()
+		shoot = true

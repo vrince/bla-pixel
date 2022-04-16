@@ -1,23 +1,23 @@
-extends Node2D
+extends RigidBody2D
 
 signal released
 
 var drag_enabled = false
-var player = null
+var original_position = Vector2.ZERO
 
 func _ready():
-	$Player.mode = RigidBody2D.MODE_STATIC
-	$Player/Particles2D.emitting = false
+	mode = RigidBody2D.MODE_STATIC
+	original_position = position
 
 func _input_event(viewport, event, shape_idx):
-	if $Player.mode == RigidBody2D.MODE_STATIC:
-		if event is InputEventMouseButton:
+	if event is InputEventMouseButton:
+		if mode == RigidBody2D.MODE_STATIC:
 			if event.button_index == BUTTON_LEFT:
 				drag_enabled = event.pressed
-				if(not drag_enabled):
-					$Player.mode = RigidBody2D.MODE_RIGID
+				if not drag_enabled:
+					mode = RigidBody2D.MODE_RIGID
 					emit_signal("released")
 
 func _physics_process(delta):
 	if drag_enabled:
-		position = get_global_mouse_position()
+		position = get_global_mouse_position() - get_parent().position
