@@ -6,16 +6,16 @@ var shoot = false
 var impulse_direction = Vector2.ZERO
 var player = null
 
-const CREATURE = preload("res://characters/creature.tscn")
+const POULE = preload("res://angry-bla/poule.tscn")
 
 func _ready():
 	reload()
 	pass
 
 func reload():
-	player = CREATURE.instance()
+	player = POULE.instance()
 	add_child(player)
-	player.connect("released", self, "_on_player_released")
+	player.connect("released", self, "_on_poule_released")
 	on_slingshot = true
 	shoot = false
 
@@ -35,7 +35,7 @@ func _process(delta):
 			points[1] = Vector2.ZERO
 
 
-func _on_player_released():
+func _on_poule_released():
 	if on_slingshot and not shoot:
 		impulse_direction = - player.position.normalized()
 		shoot = true
