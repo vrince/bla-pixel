@@ -23,11 +23,17 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://characters/player.gd"
+}, {
+"base": "RigidBody2D",
+"class": "Poule",
+"language": "GDScript",
+"path": "res://angry-bla/poule.gd"
 } ]
 _global_script_class_icons={
 "Box": "",
 "Pick": "",
-"Player": ""
+"Player": "",
+"Poule": ""
 }
 
 [application]
