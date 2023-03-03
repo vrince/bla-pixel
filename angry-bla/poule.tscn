@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://angry-bla/poule.gd" type="Script" id=1]
 [ext_resource path="res://assets/Poules/kipo-2.png" type="Texture" id=2]
@@ -15,33 +15,51 @@
 [ext_resource path="res://assets/Poules/hermione-5.png" type="Texture" id=13]
 [ext_resource path="res://assets/Poules/hermione-0.png" type="Texture" id=14]
 [ext_resource path="res://assets/Poules/hermione-3.png" type="Texture" id=15]
+[ext_resource path="res://assets/Poules/chipolata-2.png" type="Texture" id=16]
+[ext_resource path="res://assets/Poules/chipolata-3.png" type="Texture" id=17]
+[ext_resource path="res://assets/Poules/chipolata-6.png" type="Texture" id=18]
+[ext_resource path="res://assets/Poules/chipolata-1.png" type="Texture" id=19]
+[ext_resource path="res://assets/Poules/chipolata-5.png" type="Texture" id=20]
+[ext_resource path="res://assets/Poules/chipolata-4.png" type="Texture" id=21]
+[ext_resource path="res://assets/Poules/chipolata-0.png" type="Texture" id=22]
 
 [sub_resource type="PhysicsMaterial" id=5]
-friction = 0.1
+friction = 0.2
+rough = true
 bounce = 0.2
 absorbent = true
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
+"frames": [ ExtResource( 11 ), ExtResource( 13 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "hermione-fly",
+"speed": 8.0
+}, {
 "frames": [ ExtResource( 4 ), ExtResource( 8 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "kipo-fly",
 "speed": 13.0
-}, {
-"frames": [ ExtResource( 14 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 15 ) ],
-"loop": true,
-"name": "chipolata-idle",
-"speed": 7.0
 }, {
 "frames": [ ExtResource( 7 ), ExtResource( 5 ), ExtResource( 2 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "kipo-idle",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 11 ), ExtResource( 13 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 14 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "hermione-idle",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 19 ), ExtResource( 16 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "chipolata-idle",
+"speed": 9.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 20 ), ExtResource( 18 ) ],
 "loop": true,
 "name": "chipolata-fly",
-"speed": 8.0
+"speed": 11.0
 } ]
 
 [sub_resource type="CircleShape2D" id=3]

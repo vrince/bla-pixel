@@ -3,10 +3,10 @@ extends RigidBody2D
 class_name Player
 
 export var id: String = "none"
-export var selected: bool = true
+export var selected: String = ""
 export var item: String = ""
-export var stomp_impulse: = 70.0
-export var jump_impulse: = 60.0
+export var stomp_impulse: = 100.0
+export var jump_impulse: = 15.0
 export var speed: = 200.0
 export var ground_speed_delta: = 50.0
 export var air_speed_delta: = 10.0
@@ -18,6 +18,12 @@ var original_position : Vector2
 var original_scale : Vector2
 var reset := false
 var reset_timer = null
+
+var jump_counter = 0
+var is_on_ground = false
+var is_on_player = false
+var touch_right = false
+var touch_left = false
 
 func _ready():
 	Global.connect("player_selected", self, "_on_player_selected")
@@ -32,21 +38,15 @@ func _ready():
 	
 	original_position = get_global_position()
 	original_scale = get_parent().scale
-
-	_on_player_selected("", Global.selected_player)
 	
 	reset_timer = Timer.new()
 	add_child(reset_timer)
 	reset_timer.set_one_shot(true)
 	reset_timer.connect("timeout", self, "_on_reset_timeout")
 
-func _input(e):
-	if Input.is_action_pressed(id):
-		Global.select_player(id)
-
 func _on_player_selected(old_id: String, new_id: String):
-	selected = (new_id == id)
-	$Particles2D.emitting = selected
+	selected = new_id
+	$Particles2D.emitting = (id == selected)
 
 func _on_item_picked(new_item: String, player_id: String, texture: Texture):
 	if item.empty() and player_id == id:
@@ -82,24 +82,36 @@ func _integrate_forces(state: Physics2DDirectBodyState):
 		if reset_timer.is_stopped():
 			reset_timer.start(0.5)
 	
-	var is_on_ground = len($Area2DGround.get_overlapping_bodies()) > 0
-	var is_on_player = len($Area2DPlayer.get_overlapping_bodies()) > 1 #current player overlap always
-	var touch_right = len($Area2DRight.get_overlapping_bodies()) > 0
-	var touch_left = len($Area2DLeft.get_overlapping_bodies()) > 0
+	is_on_ground = len($Area2DGround.get_overlapping_bodies()) > 0
+	is_on_player = len($Area2DPlayer.get_overlapping_bodies()) > 1 #current player overlap always
+	touch_right = len($Area2DRight.get_overlapping_bodies()) > 0
+	touch_left = len($Area2DLeft.get_overlapping_bodies()) > 0
 	
-	var jump = (selected and Input.is_action_pressed("jump")) or Input.is_action_pressed(id + "_jump")
-	var right = (selected and Input.get_action_strength("ui_right")) or Input.is_action_pressed(id + "_right")
-	var left = (selected and Input.get_action_strength("ui_left")) or Input.is_action_pressed(id + "_left")
+	var jump = ((id == selected) and Input.is_action_pressed("jump")) or (("none" == selected) && Input.is_action_pressed(id + "_jump"))
+	var right = ((id == selected) and Input.get_action_strength("right")) or (("none" == selected) && Input.is_action_pressed(id + "_right"))
+	var left = ((id == selected) and Input.get_action_strength("left")) or (("none" == selected) && Input.is_action_pressed(id + "_left"))
+	
+	var is_jumping = (jump_counter > 0) && (jump_counter < 30)
+	
+	if jump:
+		if is_jumping:
+			jump_counter += 1
+			apply_central_impulse(Vector2.UP * jump_impulse)
+	else:
+		jump_counter = 0
 	
 	if is_on_ground:
 		if jump:
+			jump_counter += 1
 			apply_central_impulse(Vector2.UP * jump_impulse)
 		if right:
 			state.linear_velocity.x += ground_speed_delta
 		if left:
 			state.linear_velocity.x -= ground_speed_delta
 	elif is_on_player and jump:
-		apply_central_impulse(Vector2.UP * stomp_impulse)
+		if jump_counter == 0:
+			jump_counter += 1
+			apply_central_impulse(Vector2.UP * stomp_impulse)
 	else:
 		if not touch_right and right:
 			state.linear_velocity.x += air_speed_delta

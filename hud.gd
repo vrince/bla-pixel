@@ -2,7 +2,6 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_on_player_selected("", Global.selected_player)
 	_on_diamond_count_changed(Global.diamond_count)
 	Global.connect("player_selected", self, "_on_player_selected")
 	Global.connect("new_player", self, "_on_new_player")

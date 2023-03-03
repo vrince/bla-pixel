@@ -1,12 +1,14 @@
 extends Node
 
-var selected_player : String = ""
+var selected_player : int = 0
 var level : int = 0
 var start_scene_time : int = -1
 var level_time : int = 300
 var count_down : int = -1
 var diamond_count: int = 0
 var lives = {"bastien": 0, "lucille": 0, "adeline": 0}
+
+var players := ["none", "bastien", "lucille", "adeline"]
 
 var levels := [
 	"levels/level-0.tscn",
@@ -36,13 +38,14 @@ signal diamond_count_changed(count)
 signal new_player(player_id)
 
 func _ready():
-	select_player("bastien")
+	select_player(0)
 	connect("level_finished", self, "_on_level_finished")
 
-func select_player(player_id: String):
-	var old_id = selected_player
-	selected_player = player_id
-	emit_signal("player_selected", old_id, selected_player)
+func select_player(index: int):
+	var old_selected_player = selected_player
+	selected_player = index
+	selected_player = min(max(0, selected_player),3)
+	emit_signal("player_selected", players[old_selected_player], players[selected_player])
 
 func new_player(player_id: String):
 	lives[player_id] += 1
@@ -57,11 +60,21 @@ func change_scene(scene: String):
 	count_down = -1
 	get_tree().change_scene(scene)
 	emit_signal("start_new_level", scene)
-	select_player("bastien")
+	select_player(0)
 
 func _input(event):
 	if event.is_action_pressed("ui_end"):
 		get_tree().change_scene("res://menu.tscn")
+	if event.is_action_pressed("bastien"):
+		select_player(1)
+	if event.is_action_pressed("lucille"):
+		select_player(2)
+	if event.is_action_pressed("adeline"):
+		select_player(3)
+	if event.is_action_pressed("player_previous"):
+		select_player(selected_player - 1)
+	if event.is_action_pressed("player_next"):
+		select_player(selected_player + 1)
 
 func _on_level_finished():
 	level += 1

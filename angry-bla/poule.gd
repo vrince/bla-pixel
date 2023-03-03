@@ -2,7 +2,7 @@ extends RigidBody2D
 
 class_name Poule
 
-const names = ['kipo', 'chipolata']
+const names = ['kipo', 'chipolata', 'hermione']
 
 signal released
 
@@ -33,8 +33,12 @@ func _physics_process(delta):
 	
 	if drag_enabled:
 		position = get_global_mouse_position() - get_parent().position
+		$AnimatedSprite.flip_h = position.x >= -0.01
+	else:
+		$AnimatedSprite.flip_h = linear_velocity.x < -0.01
 		
 	$AnimatedSprite.animation = poule + ('-fly' if flying else '-idle')
+
 	
 	if flying and Input.is_action_pressed("ui_accept"):
 		if poule == 'kipo' and linear_velocity.y > 0:
@@ -43,7 +47,6 @@ func _physics_process(delta):
 			apply_central_impulse(impulse * Vector2.UP)
 		elif poule == 'hermione' and linear_velocity.x > 0:
 			apply_central_impulse(impulse * Vector2.LEFT)
-
 
 
 func _on_VisibilityNotifier2D_viewport_exited(viewport):
